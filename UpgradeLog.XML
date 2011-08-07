@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="ColorInspector">
+</Property><Property Name="Solution File" Value="C:\Users\arahlf\Desktop\ColorInspector\ColorInspector.sln">
+</Property><Property Name="User Options File" Value="C:\Users\arahlf\Desktop\ColorInspector\ColorInspector.suo">
+</Property><Property Name="Date" Value="Sunday, July 25, 2010">
+</Property><Property Name="Time" Value="20:51 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="ColorInspector.sln" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector.sln">
+</Event><Event ErrorLevel="0" Project="" Source="ColorInspector.suo" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector.suo">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\ColorInspector.csproj" Description="Project file successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\ColorInspector.csproj">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\ColorInspector.csproj.user" Description="Project user file successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\ColorInspector.csproj.user">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\ColorInspector.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\ColorInspector.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\ColorInspector.Designer.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\ColorInspector.Designer.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Gdi32.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Gdi32.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Hooking.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Hooking.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Kernel32.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Kernel32.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\PicturePanel.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\PicturePanel.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Program.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Program.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Properties\Resources.Designer.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Properties\Resources.Designer.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Properties\Settings.Designer.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Properties\Settings.Designer.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\User32.cs" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\User32.cs">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Properties\Settings.settings" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Properties\Settings.settings">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\ico32.ico" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\ico32.ico">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\mglass.ico" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\mglass.ico">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\mglass_new.ico" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\mglass_new.ico">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\ColorInspector.resx" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\ColorInspector.resx">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\Properties\Resources.resx" Description="File successfully backed up as C:\Users\arahlf\Desktop\ColorInspector\Backup\ColorInspector\Properties\Resources.resx">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\ColorInspector.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ColorInspector" Source="ColorInspector\ColorInspector.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="ColorInspector.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="ColorInspector.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="ColorInspector" Source="ColorInspector\ColorInspector.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
