@@ -19,6 +19,12 @@ namespace ColorInspectorSpace
         {
             InitializeComponent();
 
+            ToolTip toolTip = new ToolTip();
+            toolTip.SetToolTip(btnCopyRGB, "Copy RGB to clipboard.");
+            toolTip.SetToolTip(btnCopyHex, "Copy Hex to clipboard.");
+            toolTip.SetToolTip(btnInspect, "Press and drag to begin inspecting.");
+            toolTip.SetToolTip(pnlColor, "Click to change color.");
+
             // install the hook
             Hooking.CreateLowLevelMouseHook(mouseMoved);
         }
@@ -135,6 +141,20 @@ namespace ColorInspectorSpace
         private void ColorInspector_Paint(object sender, PaintEventArgs e)
         {
             drawImages();
+        }
+
+        private void btnCopyRGB_Click(object sender, EventArgs e) {
+        }
+
+        private void btnCopyHex_Click(object sender, EventArgs e) {
+        }
+
+        private void pnlColor_Click(object sender, EventArgs e) {
+            ColorInputDialog inputDialog = new ColorInputDialog();
+
+            inputDialog.ShowDialog();
+
+            pnlColor.BackColor = inputDialog.getColor();
         }
 
     }

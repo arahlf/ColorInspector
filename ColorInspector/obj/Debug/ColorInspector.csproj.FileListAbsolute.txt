@@ -32,3 +32,4 @@ C:\Users\arahlf\Desktop\Stuff\ColorInspector\ColorInspector\obj\Debug\ColorInspe
 C:\Users\arahlf\Desktop\Stuff\ColorInspector\ColorInspector\obj\Debug\ColorInspectorSpace.Properties.Resources.resources
 C:\Users\arahlf\Desktop\Stuff\ColorInspector\ColorInspector\obj\Debug\ResGen.read.1.tlog
 C:\Users\arahlf\Desktop\Stuff\ColorInspector\ColorInspector\obj\Debug\ResGen.write.1.tlog
+C:\Users\arahlf\Desktop\Stuff\ColorInspector\ColorInspector\obj\Debug\ColorInspectorSpace.ColorInputDialog.resources

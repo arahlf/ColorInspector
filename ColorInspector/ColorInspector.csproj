@@ -12,7 +12,7 @@
     <AssemblyName>ColorInspector</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>ico32.ico</ApplicationIcon>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorInputDialog.Designer.cs">
+      <DependentUpon>ColorInputDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ColorInspector.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ColorInputDialog.resx">
+      <DependentUpon>ColorInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ColorInspector.resx">
       <DependentUpon>ColorInspector.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -109,9 +118,9 @@
     <Compile Include="User32.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ico32.ico" />
-    <Content Include="mglass.ico" />
-    <Content Include="mglass_new.ico" />
+    <Content Include="clipboard.png" />
+    <Content Include="icon.ico" />
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

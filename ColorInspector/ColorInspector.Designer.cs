@@ -43,23 +43,25 @@
             this.txtRGB = new System.Windows.Forms.TextBox();
             this.lbl900 = new System.Windows.Forms.Label();
             this.lbl100 = new System.Windows.Forms.Label();
-            this.pnlColor = new System.Windows.Forms.Panel();
+            this.btnCopyRGB = new System.Windows.Forms.Button();
+            this.btnCopyHex = new System.Windows.Forms.Button();
+            this.pnlColor = new ColorInspectorSpace.PicturePanel();
             this.pnlZoom = new ColorInspectorSpace.PicturePanel();
             this.pnlScan = new ColorInspectorSpace.PicturePanel();
             this.SuspendLayout();
             // 
             // txtColorHex
             // 
-            this.txtColorHex.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtColorHex.Location = new System.Drawing.Point(210, 74);
+            this.txtColorHex.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtColorHex.Location = new System.Drawing.Point(309, 74);
             this.txtColorHex.Name = "txtColorHex";
-            this.txtColorHex.Size = new System.Drawing.Size(100, 21);
+            this.txtColorHex.Size = new System.Drawing.Size(100, 23);
             this.txtColorHex.TabIndex = 2;
             // 
             // lblHex
             // 
             this.lblHex.AutoSize = true;
-            this.lblHex.Location = new System.Drawing.Point(211, 58);
+            this.lblHex.Location = new System.Drawing.Point(310, 58);
             this.lblHex.Name = "lblHex";
             this.lblHex.Size = new System.Drawing.Size(29, 13);
             this.lblHex.TabIndex = 3;
@@ -67,9 +69,9 @@
             // 
             // btnInspect
             // 
-            this.btnInspect.Location = new System.Drawing.Point(235, 106);
+            this.btnInspect.Location = new System.Drawing.Point(309, 106);
             this.btnInspect.Name = "btnInspect";
-            this.btnInspect.Size = new System.Drawing.Size(75, 23);
+            this.btnInspect.Size = new System.Drawing.Size(100, 23);
             this.btnInspect.TabIndex = 4;
             this.btnInspect.Text = "Inspect";
             this.btnInspect.UseVisualStyleBackColor = true;
@@ -88,7 +90,7 @@
             // lblRGB
             // 
             this.lblRGB.AutoSize = true;
-            this.lblRGB.Location = new System.Drawing.Point(207, 12);
+            this.lblRGB.Location = new System.Drawing.Point(306, 12);
             this.lblRGB.Name = "lblRGB";
             this.lblRGB.Size = new System.Drawing.Size(33, 13);
             this.lblRGB.TabIndex = 7;
@@ -96,9 +98,10 @@
             // 
             // txtRGB
             // 
-            this.txtRGB.Location = new System.Drawing.Point(210, 28);
+            this.txtRGB.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRGB.Location = new System.Drawing.Point(309, 28);
             this.txtRGB.Name = "txtRGB";
-            this.txtRGB.Size = new System.Drawing.Size(100, 20);
+            this.txtRGB.Size = new System.Drawing.Size(100, 23);
             this.txtRGB.TabIndex = 8;
             // 
             // lbl900
@@ -121,12 +124,35 @@
             this.lbl100.TabIndex = 10;
             this.lbl100.Text = "100%";
             // 
+            // btnCopyRGB
+            // 
+            this.btnCopyRGB.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyRGB.Image")));
+            this.btnCopyRGB.Location = new System.Drawing.Point(415, 28);
+            this.btnCopyRGB.Name = "btnCopyRGB";
+            this.btnCopyRGB.Size = new System.Drawing.Size(22, 23);
+            this.btnCopyRGB.TabIndex = 15;
+            this.btnCopyRGB.UseVisualStyleBackColor = true;
+            this.btnCopyRGB.Click += new System.EventHandler(this.btnCopyRGB_Click);
+            // 
+            // btnCopyHex
+            // 
+            this.btnCopyHex.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyHex.Image")));
+            this.btnCopyHex.Location = new System.Drawing.Point(415, 72);
+            this.btnCopyHex.Name = "btnCopyHex";
+            this.btnCopyHex.Size = new System.Drawing.Size(22, 23);
+            this.btnCopyHex.TabIndex = 16;
+            this.btnCopyHex.UseVisualStyleBackColor = true;
+            this.btnCopyHex.Click += new System.EventHandler(this.btnCopyHex_Click);
+            // 
             // pnlColor
             // 
-            this.pnlColor.Location = new System.Drawing.Point(210, 108);
+            this.pnlColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlColor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlColor.Location = new System.Drawing.Point(207, 12);
             this.pnlColor.Name = "pnlColor";
-            this.pnlColor.Size = new System.Drawing.Size(19, 19);
-            this.pnlColor.TabIndex = 13;
+            this.pnlColor.Size = new System.Drawing.Size(83, 83);
+            this.pnlColor.TabIndex = 14;
+            this.pnlColor.Click += new System.EventHandler(this.pnlColor_Click);
             // 
             // pnlZoom
             // 
@@ -150,7 +176,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(320, 141);
+            this.ClientSize = new System.Drawing.Size(445, 141);
+            this.Controls.Add(this.btnCopyHex);
+            this.Controls.Add(this.btnCopyRGB);
             this.Controls.Add(this.pnlColor);
             this.Controls.Add(this.pnlZoom);
             this.Controls.Add(this.pnlScan);
@@ -166,6 +194,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ColorInspector";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Color Inspector";
             this.TopMost = true;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ColorInspector_Paint);
@@ -186,7 +215,9 @@
         private System.Windows.Forms.Label lbl100;
         private PicturePanel pnlScan;
         private PicturePanel pnlZoom;
-        private System.Windows.Forms.Panel pnlColor;
+        private PicturePanel pnlColor;
+        private System.Windows.Forms.Button btnCopyRGB;
+        private System.Windows.Forms.Button btnCopyHex;
     }
 }
 
