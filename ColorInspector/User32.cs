@@ -2,12 +2,12 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace ColorInspectorSpace
+namespace ColorInspector
 {
     /// <summary>
     /// encapsulates user32.dll function calls
     /// </summary>
-    class User32
+    public class User32
     {
         private const int SM_CXVIRTUALSCREEN = 78;
         private const int SM_CYVIRTUALSCREEN = 79;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ColorInspectorSpace
+namespace ColorInspector
 {
     /// <summary>
     /// class with a panel used to draw images on

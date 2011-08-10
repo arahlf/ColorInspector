@@ -8,7 +8,7 @@
     <ProjectGuid>{B444214D-D96C-4E53-AED2-C1B69906AFC6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ColorInspectorSpace</RootNamespace>
+    <RootNamespace>ColorInspector</RootNamespace>
     <AssemblyName>ColorInspector</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -75,11 +75,11 @@
     <Compile Include="ColorInputDialog.Designer.cs">
       <DependentUpon>ColorInputDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ColorInspector.cs">
+    <Compile Include="InspectorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ColorInspector.Designer.cs">
-      <DependentUpon>ColorInspector.cs</DependentUpon>
+    <Compile Include="InspectorForm.Designer.cs">
+      <DependentUpon>InspectorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Gdi32.cs" />
     <Compile Include="Hooking.cs" />
@@ -92,8 +92,8 @@
     <EmbeddedResource Include="ColorInputDialog.resx">
       <DependentUpon>ColorInputDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ColorInspector.resx">
-      <DependentUpon>ColorInspector.cs</DependentUpon>
+    <EmbeddedResource Include="InspectorForm.resx">
+      <DependentUpon>InspectorForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace ColorInspectorSpace
+namespace ColorInspector
 {
     /// <summary>
     /// provides an api for installing a low level mouse hook to monitor mouse activity

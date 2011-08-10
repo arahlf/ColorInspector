@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace ColorInspectorSpace
+namespace ColorInspector
 {
     /// <summary>
     /// wrapper for gdi32.dll function calls
