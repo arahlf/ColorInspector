@@ -1,0 +1,2 @@
+﻿refactor main form to make memory management more logical
+create / install mouse hook on form load instead of staticly
