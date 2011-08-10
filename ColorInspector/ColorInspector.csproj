@@ -118,7 +118,6 @@
     <Compile Include="User32.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="clipboard.png" />
     <Content Include="icon.ico" />
     <Content Include="TODO.txt" />
   </ItemGroup>

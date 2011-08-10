@@ -4,13 +4,12 @@ using System.Windows.Forms;
 namespace ColorInspector
 {
     /// <summary>
-    /// class with a panel used to draw images on
+    /// A Panel that is optimized for drawing on.
     /// </summary>
-    public class PicturePanel : Panel
+    public class DrawingPanel : Panel
     {
-        public PicturePanel()
+        public DrawingPanel()
         {
-            // styles to optimize drawing on a panel
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);

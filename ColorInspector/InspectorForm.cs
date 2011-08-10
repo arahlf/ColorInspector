@@ -10,9 +10,7 @@ namespace ColorInspector
         // 100% / 900% images
         Bitmap bmpScan;
         Bitmap bmpZoom;
-        Pen p = new Pen(Color.Black); // pen used to draw the grid lines on the panels
         bool scanning = false; // is the user scanning the desktop
-
 
         // form constructor
         public InspectorForm()
@@ -21,6 +19,7 @@ namespace ColorInspector
 
             ToolTip toolTip = new ToolTip();
             toolTip.SetToolTip(btnInspect, "Press and drag to begin inspecting.");
+            toolTip.SetToolTip(pnlZoom, "Click a color to select it.");
             toolTip.SetToolTip(pnlColor, "Click to change color.");
 
             // install the hook
@@ -35,10 +34,6 @@ namespace ColorInspector
             // happens if user mouses over the zoom panel before actually inspecting
             if (bmpScan == null) { 
                 return; 
-            }
-
-            if (bmpZoom != null) {
-                bmpZoom.Dispose();
             }
 
             bmpZoom = new Bitmap(81, 81);
@@ -67,19 +62,16 @@ namespace ColorInspector
             pnlZoomGraphics.DrawImage(bmpZoom, 0, 0);
 
             // draw the crosses to divide each panel into 4 quadrants
-            pnlScanGraphics.DrawLine(p, 0, 40, 81, 40);
-            pnlScanGraphics.DrawLine(p, 40, 0, 40, 81);
-            pnlZoomGraphics.DrawLine(p, 0, 41, 81, 41);
-            pnlZoomGraphics.DrawLine(p, 41, 0, 41, 81);
+            pnlScanGraphics.DrawLine(Pens.Black, 0, 40, 81, 40);
+            pnlScanGraphics.DrawLine(Pens.Black, 40, 0, 40, 81);
+            pnlZoomGraphics.DrawLine(Pens.Black, 0, 41, 81, 41);
+            pnlZoomGraphics.DrawLine(Pens.Black, 41, 0, 41, 81);
 
             // free resources
             bmpScanGraphics.Dispose();
             bmpZoomGraphics.Dispose();
             pnlScanGraphics.Dispose();
             pnlZoomGraphics.Dispose();
-
-            bmpScan.Dispose();
-            bmpScan = null;
         }
 
 
@@ -88,6 +80,14 @@ namespace ColorInspector
         {
             if (scanning)
             {
+                // cleanup old memory
+                if (bmpScan != null) {
+                    bmpScan.Dispose();
+                }
+                if (bmpZoom != null) {
+                    bmpZoom.Dispose();
+                }
+
                 // get the 81x81 bitmap under the mouse
                 bmpScan = Gdi32.CaptureDesktopWindow(x, y, 81);
 
@@ -122,14 +122,10 @@ namespace ColorInspector
             this.pnlColor.BackColor = c;
         }
 
-
-        #region Event Handlers
-
         private void btnInspect_MouseUp(object sender, MouseEventArgs e)
         {
             scanning = false;
         }
-
 
         private void btnInspect_MouseDown(object sender, MouseEventArgs e)
         {
@@ -140,8 +136,6 @@ namespace ColorInspector
         {
             drawImages();
         }
-
-        #endregion
 
         private void ColorInspector_Paint(object sender, PaintEventArgs e)
         {
@@ -154,7 +148,15 @@ namespace ColorInspector
             inputDialog.ShowDialog();
 
             pnlColor.BackColor = inputDialog.getColor();
-        }
 
+            Color color = inputDialog.getColor();
+
+            if (color == Color.Empty) {
+                Graphics graphics = pnlColor.CreateGraphics();
+                Font font = new Font(FontFamily.GenericSansSerif, 14);
+                Brush brush = Brushes.Red;
+                graphics.DrawString("Invalid Color.", font, brush, 10, 10);
+            }
+        }
     }
 }

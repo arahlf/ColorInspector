@@ -1,2 +1,4 @@
 ﻿refactor main form to make memory management more logical
 create / install mouse hook on form load instead of staticly
+show some kind of message when an invalid color is entered
+less hard-coding of math values

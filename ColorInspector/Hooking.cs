@@ -30,24 +30,16 @@ namespace ColorInspector
             hook = User32.SetWindowsHookEx(WH_MOUSE_LL, hookProc, Kernel32.GetModuleHandle(Process.GetCurrentProcess().MainModule.ModuleName), 0);
         }
 
-        
-        // allows a user to specifiy multiple callback functions when a mouse event occurs
-        public static void AddMouseHandler(MouseHandler mh)
-        {
-            mouseHandler += mh;
-        }
-
-
         // hook callback function
         private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             // check if the message can be processed and if the mouse event was a movement
-            if (nCode >= 0 && MouseMessages.WM_MOUSEMOVE == (MouseMessages)wParam)
+            if (nCode >= 0 && MouseMessages.WM_MOUSEMOVE == (MouseMessages) wParam)
             {
                 // convert the unmanged pointer to a managed instance of the hook structure
-                MSLLHOOKSTRUCT hookStruct = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
+                MSLLHOOKSTRUCT hookStruct = (MSLLHOOKSTRUCT) Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
 
-                ValidateMousePoint(ref hookStruct.pt);
+                ConstrainToDesktop(ref hookStruct.pt);
 
                 // call the user-specified function with the x/y coordinates of the event
                 mouseHandler(hookStruct.pt.x, hookStruct.pt.y);
@@ -69,15 +61,25 @@ namespace ColorInspector
         /// ensures that the x,y coordinates returned by the hook do not exceed that of the actual desktop
         /// </summary>
         /// <param name="p">reference to the point structure passed into the hook callback</param>
-        public static void ValidateMousePoint(ref POINT p)
+        private static void ConstrainToDesktop(ref POINT p)
         {
             // validate x coordinate
-            if (p.x < 0) { p.x = 0; }
-            if (p.x > screenRect.Width - 1) { p.x = screenRect.Width - 1; }
+            if (p.x < 0) {
+                p.x = 0;
+            }
+
+            if (p.x > screenRect.Width - 1) {
+                p.x = screenRect.Width - 1;
+            }
 
             // validate y coordinate
-            if (p.y < 0) { p.y = 0; }
-            if (p.y > screenRect.Height - 1) { p.y = screenRect.Height - 1; }
+            if (p.y < 0) {
+                p.y = 0;
+            }
+
+            if (p.y > screenRect.Height - 1) {
+                p.y = screenRect.Height - 1;
+            }
         }
 
 

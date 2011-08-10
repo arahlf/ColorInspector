@@ -44,9 +44,9 @@
             this.lbl900 = new System.Windows.Forms.Label();
             this.lbl100 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlColor = new PicturePanel();
-            this.pnlZoom = new PicturePanel();
-            this.pnlScan = new PicturePanel();
+            this.pnlColor = new ColorInspector.DrawingPanel();
+            this.pnlZoom = new ColorInspector.DrawingPanel();
+            this.pnlScan = new ColorInspector.DrawingPanel();
             this.SuspendLayout();
             // 
             // txtColorHex
@@ -68,7 +68,7 @@
             // 
             // btnInspect
             // 
-            this.btnInspect.Location = new System.Drawing.Point(309, 106);
+            this.btnInspect.Location = new System.Drawing.Point(309, 109);
             this.btnInspect.Name = "btnInspect";
             this.btnInspect.Size = new System.Drawing.Size(100, 23);
             this.btnInspect.TabIndex = 4;
@@ -80,9 +80,10 @@
             // lblMouseCoords
             // 
             this.lblMouseCoords.AutoSize = true;
-            this.lblMouseCoords.Location = new System.Drawing.Point(12, 119);
+            this.lblMouseCoords.Font = new System.Drawing.Font("Verdana", 8.25F);
+            this.lblMouseCoords.Location = new System.Drawing.Point(9, 119);
             this.lblMouseCoords.Name = "lblMouseCoords";
-            this.lblMouseCoords.Size = new System.Drawing.Size(107, 13);
+            this.lblMouseCoords.Size = new System.Drawing.Size(125, 13);
             this.lblMouseCoords.TabIndex = 6;
             this.lblMouseCoords.Text = "Mouse Location: 0, 0";
             // 
@@ -161,11 +162,12 @@
             this.pnlScan.Size = new System.Drawing.Size(83, 83);
             this.pnlScan.TabIndex = 11;
             // 
-            // ColorInspector
+            // InspectorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 141);
+            this.Controls.Add(this.btnInspect);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlColor);
             this.Controls.Add(this.pnlZoom);
@@ -175,13 +177,12 @@
             this.Controls.Add(this.txtRGB);
             this.Controls.Add(this.lblRGB);
             this.Controls.Add(this.lblMouseCoords);
-            this.Controls.Add(this.btnInspect);
             this.Controls.Add(this.lblHex);
             this.Controls.Add(this.txtColorHex);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "ColorInspector";
+            this.Name = "InspectorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Color Inspector";
             this.TopMost = true;
@@ -201,9 +202,9 @@
         private System.Windows.Forms.TextBox txtRGB;
         private System.Windows.Forms.Label lbl900;
         private System.Windows.Forms.Label lbl100;
-        private PicturePanel pnlScan;
-        private PicturePanel pnlZoom;
-        private PicturePanel pnlColor;
+        private DrawingPanel pnlScan;
+        private DrawingPanel pnlZoom;
+        private DrawingPanel pnlColor;
         private System.Windows.Forms.Label label1;
     }
 }
