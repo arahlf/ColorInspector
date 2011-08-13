@@ -20,8 +20,9 @@
                     components.Dispose();
                 }
 
-                // remove the hook when the application is closing
-                Hooking.DestroyHook();
+                if (hook != null) {
+                    hook.Dispose();
+                }
             }
             base.Dispose(disposing);
         }
@@ -74,8 +75,8 @@
             this.btnInspect.TabIndex = 4;
             this.btnInspect.Text = "Inspect";
             this.btnInspect.UseVisualStyleBackColor = true;
-            this.btnInspect.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnInspect_MouseDown);
-            this.btnInspect.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnInspect_MouseUp);
+            this.btnInspect.MouseDown += new System.Windows.Forms.MouseEventHandler(this._btnInspectMouseDown);
+            this.btnInspect.MouseUp += new System.Windows.Forms.MouseEventHandler(this._btnInspectMouseUp);
             // 
             // lblMouseCoords
             // 
@@ -152,7 +153,7 @@
             this.pnlZoom.Name = "pnlZoom";
             this.pnlZoom.Size = new System.Drawing.Size(83, 83);
             this.pnlZoom.TabIndex = 12;
-            this.pnlZoom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlZoom_MouseDown);
+            this.pnlZoom.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlZoomClick);
             // 
             // pnlScan
             // 
@@ -187,6 +188,7 @@
             this.Text = "Color Inspector";
             this.TopMost = true;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ColorInspector_Paint);
+            this.Resize += new System.EventHandler(this.OnFormResize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

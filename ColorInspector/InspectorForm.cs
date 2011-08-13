@@ -5,14 +5,8 @@ using System.Drawing.Drawing2D;
 
 namespace ColorInspector
 {
-    public partial class InspectorForm : Form
+    public partial class InspectorForm : Form, IMouseMoveListener
     {
-        // 100% / 900% images
-        Bitmap bmpScan;
-        Bitmap bmpZoom;
-        bool scanning = false; // is the user scanning the desktop
-
-        // form constructor
         public InspectorForm()
         {
             InitializeComponent();
@@ -20,125 +14,96 @@ namespace ColorInspector
             ToolTip toolTip = new ToolTip();
             toolTip.SetToolTip(btnInspect, "Press and drag to begin inspecting.");
             toolTip.SetToolTip(pnlZoom, "Click a color to select it.");
-            toolTip.SetToolTip(pnlColor, "Click to change color.");
+            toolTip.SetToolTip(pnlColor, "Click to change colors.");
 
-            // install the hook
-            Hooking.CreateLowLevelMouseHook(mouseMoved);
+            hook = new MouseMoveHook(this);
         }
 
-
-        // update the 900% view
-        private void drawImages()
-        {
-            // if the bmps have not yet been initialized, do not proceed
-            // happens if user mouses over the zoom panel before actually inspecting
-            if (bmpScan == null) { 
-                return; 
+        private void updateImages(int x, int y) {
+            if (bmpScan != null) {
+                bmpScan.Dispose();
+            }
+            if (bmpZoom != null) {
+                bmpZoom.Dispose();
             }
 
-            bmpZoom = new Bitmap(81, 81);
+            bmpScan = Utils.CaptureDesktopWindow(x, y, SIZE, SIZE);
+            bmpZoom = new Bitmap(SIZE, SIZE);
 
-            Graphics pnlScanGraphics = this.pnlScan.CreateGraphics();
-            Graphics pnlZoomGraphics = this.pnlZoom.CreateGraphics();
             Graphics bmpScanGraphics = Graphics.FromImage(bmpScan);
             Graphics bmpZoomGraphics = Graphics.FromImage(bmpZoom);
-
+            
             // set properties to create the pixelated effect
-            pnlZoomGraphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-            pnlZoomGraphics.PixelOffsetMode = PixelOffsetMode.Half;
-
-            // rectangles of the source / destination to draw
-            Rectangle srcRect = new Rectangle(36, 36, 9, 9);
-            Rectangle dstRect = new Rectangle(0, 0, 81, 81);
-
             bmpZoomGraphics.InterpolationMode = InterpolationMode.NearestNeighbor;
             bmpZoomGraphics.PixelOffsetMode = PixelOffsetMode.Half;
 
-            // draw the scan bitmap
-            pnlScanGraphics.DrawImage(bmpScan, 0, 0);
+            // create the zoomed image by transferring part of the scan
+            bmpZoomGraphics.DrawImage(bmpScan, DST_RECT, SRC_RECT, GraphicsUnit.Pixel);
 
-            // draw the zoomed bitmap, then draw it onto the form
-            bmpZoomGraphics.DrawImage(bmpScan, dstRect, srcRect, GraphicsUnit.Pixel);
-            pnlZoomGraphics.DrawImage(bmpZoom, 0, 0);
-
-            // draw the crosses to divide each panel into 4 quadrants
-            pnlScanGraphics.DrawLine(Pens.Black, 0, 40, 81, 40);
-            pnlScanGraphics.DrawLine(Pens.Black, 40, 0, 40, 81);
-            pnlZoomGraphics.DrawLine(Pens.Black, 0, 41, 81, 41);
-            pnlZoomGraphics.DrawLine(Pens.Black, 41, 0, 41, 81);
-
-            // free resources
             bmpScanGraphics.Dispose();
             bmpZoomGraphics.Dispose();
-            pnlScanGraphics.Dispose();
-            pnlZoomGraphics.Dispose();
+        }
+
+        private void drawImages()
+        {
+            if (bmpScan != null && bmpZoom != null) {
+                Graphics pnlScanGraphics = this.pnlScan.CreateGraphics();
+                Graphics pnlZoomGraphics = this.pnlZoom.CreateGraphics();
+
+                pnlScanGraphics.DrawImage(bmpScan, 0, 0);
+                pnlZoomGraphics.DrawImage(bmpZoom, 0, 0);
+
+                // draw the crosses to divide each panel into 4 quadrants
+                pnlScanGraphics.DrawLine(Pens.Black, 0, HALF, SIZE, HALF);
+                pnlScanGraphics.DrawLine(Pens.Black, HALF, 0, HALF, SIZE);
+                pnlZoomGraphics.DrawLine(Pens.Black, 0, HALF, SIZE, HALF);
+                pnlZoomGraphics.DrawLine(Pens.Black, HALF, 0, HALF, SIZE);
+
+                pnlScanGraphics.Dispose();
+                pnlZoomGraphics.Dispose();
+            }
         }
 
 
         // called by the hook procedure that was installed in the constructor
-        private void mouseMoved(int x, int y)
+        public void OnMouseMove(int x, int y)
         {
-            if (scanning)
-            {
-                // cleanup old memory
-                if (bmpScan != null) {
-                    bmpScan.Dispose();
-                }
-                if (bmpZoom != null) {
-                    bmpZoom.Dispose();
-                }
-
-                // get the 81x81 bitmap under the mouse
-                bmpScan = Gdi32.CaptureDesktopWindow(x, y, 81);
-
-                updateColorControls(bmpScan.GetPixel(40, 40));
-
-                // draw the 900% view
+            if (scanning) {
+                updateImages(x, y);
+                updateColorControls(bmpScan.GetPixel(HALF, HALF));
+                
                 drawImages();
             }
 
-            // update mouse coordinates
             this.lblMouseCoords.Text = "Mouse Location: " + x + ", " + y;
         }
 
+        // update the color translations when the 900% view is clicked
+        private void pnlZoomClick(object sender, MouseEventArgs e) {
+            if (bmpZoom != null) {
+                int xTile = (int) Math.Floor((double)(e.X / 9));
+                int yTile = (int) Math.Floor((double)(e.Y / 9));
 
-        // update the color translations when the 900% view is moused over
-        private void pnlZoom_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (bmpZoom == null) { return; }
-
-            int xTile = (int)Math.Floor((double)e.X / 9);
-            int yTile = (int)Math.Floor((double)e.Y / 9);
-
-            updateColorControls(bmpZoom.GetPixel(xTile * 9 + 5, yTile * 9 + 5));
+                updateColorControls(bmpZoom.GetPixel(xTile * 9 + 5, yTile * 9 + 5));
+            }
         }
 
-
         // updates the rgb/hex values
-        private void updateColorControls(Color c)
-        {
+        private void updateColorControls(Color c) {
             this.txtColorHex.Text = ColorTranslator.ToHtml(c).ToLower();
             this.txtRGB.Text = c.R + ", " + c.G + ", " + c.B;
             this.pnlColor.BackColor = c;
         }
 
-        private void btnInspect_MouseUp(object sender, MouseEventArgs e)
-        {
+        private void _btnInspectMouseUp(object sender, MouseEventArgs e) {
             scanning = false;
         }
 
-        private void btnInspect_MouseDown(object sender, MouseEventArgs e)
-        {
+        private void _btnInspectMouseDown(object sender, MouseEventArgs e) {
             scanning = true;
         }
 
-        private void pnlPaint(object sender, PaintEventArgs e)
-        {
-            drawImages();
-        }
-
-        private void ColorInspector_Paint(object sender, PaintEventArgs e)
-        {
+        private void ColorInspector_Paint(object sender, PaintEventArgs e) {
             drawImages();
         }
 
@@ -148,15 +113,24 @@ namespace ColorInspector
             inputDialog.ShowDialog();
 
             pnlColor.BackColor = inputDialog.getColor();
+        }
 
-            Color color = inputDialog.getColor();
-
-            if (color == Color.Empty) {
-                Graphics graphics = pnlColor.CreateGraphics();
-                Font font = new Font(FontFamily.GenericSansSerif, 14);
-                Brush brush = Brushes.Red;
-                graphics.DrawString("Invalid Color.", font, brush, 10, 10);
+        private void OnFormResize(object sender, EventArgs e) {
+            if (WindowState == FormWindowState.Minimized) {
+                hook.Suspend();
+            }
+            else if (WindowState == FormWindowState.Normal) {
+                hook.Resume();
             }
         }
+
+        private const int SIZE = 81;
+        private const int HALF = SIZE / 2; // expecting the truncation
+        private readonly Rectangle SRC_RECT = new Rectangle(36, 36, 9, 9);
+        private readonly Rectangle DST_RECT = new Rectangle(0, 0, SIZE, SIZE);
+        private Bitmap bmpScan;
+        private Bitmap bmpZoom;
+        private MouseMoveHook hook;
+        private bool scanning;
     }
 }

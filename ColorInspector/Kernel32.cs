@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace ColorInspector
 {
     /// <summary>
-    /// wrapper for kernell32.dll function calls
+    /// Wrapper for kernell32.dll function calls.
     /// </summary>
     public class Kernel32
     {

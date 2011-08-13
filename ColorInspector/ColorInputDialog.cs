@@ -15,7 +15,7 @@ namespace ColorInspector
             InitializeComponent();
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e) {
+        private void OnSubmit(object sender, EventArgs e) {
             this.Hide();
         }
 

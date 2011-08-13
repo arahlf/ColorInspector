@@ -5,14 +5,10 @@ using System.Runtime.InteropServices;
 namespace ColorInspector
 {
     /// <summary>
-    /// encapsulates user32.dll function calls
+    /// Wrapper for user32.dll function calls.
     /// </summary>
     public class User32
     {
-        private const int SM_CXVIRTUALSCREEN = 78;
-        private const int SM_CYVIRTUALSCREEN = 79;
-
-
         [DllImport("user32.dll")]
         public static extern IntPtr SetWindowsHookEx(int idHook, Hooking.HookProc lpfn, IntPtr hMod, uint dwThreadId);
 
@@ -33,11 +29,5 @@ namespace ColorInspector
 
         [DllImport("user32.dll")]
         public static extern IntPtr ReleaseDC(IntPtr hWnd, IntPtr hDC);
-
-
-        public static Rectangle GetScreenRectangle()
-        {
-            return new Rectangle(0, 0, GetSystemMetrics(SM_CXVIRTUALSCREEN), GetSystemMetrics(SM_CYVIRTUALSCREEN));
-        }
     }
 }

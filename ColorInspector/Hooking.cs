@@ -12,22 +12,23 @@ namespace ColorInspector
     {
         // delegates are used as an alternative to function pointers
         public delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
-        public delegate void MouseHandler(int x, int y);
 
-        private static Rectangle screenRect = User32.GetScreenRectangle(); // width/height of the user's desktop
+        private static Rectangle screenRect = Utils.GetScreenRectangle(); // width/height of the user's desktop
         private static IntPtr hook = IntPtr.Zero;                          // handle to the hook
         private static HookProc hookProc;                                  // callback function for the hook
-        private static MouseHandler mouseHandler;                          // user specified callback function
+        private static IMouseMoveListener mouseHandler;                          // user specified callback function
         private const int WH_MOUSE_LL = 14;                                // specifies a low level mouse hook, as defined in WinUser.h
 
 
         // installs a low level mouse hook to monitor mouse movement
-        public static void CreateLowLevelMouseHook(MouseHandler mh)
+        public static IntPtr CreateLowLevelMouseHook(IMouseMoveListener mouseCallback)
         {
             hookProc = HookCallback;
-            mouseHandler = mh;
+            mouseHandler = mouseCallback;
 
             hook = User32.SetWindowsHookEx(WH_MOUSE_LL, hookProc, Kernel32.GetModuleHandle(Process.GetCurrentProcess().MainModule.ModuleName), 0);
+
+            return hook;
         }
 
         // hook callback function
@@ -42,7 +43,7 @@ namespace ColorInspector
                 ConstrainToDesktop(ref hookStruct.pt);
 
                 // call the user-specified function with the x/y coordinates of the event
-                mouseHandler(hookStruct.pt.x, hookStruct.pt.y);
+                mouseHandler.OnMouseMove(hookStruct.pt.x, hookStruct.pt.y);
             }
 
             // pass the hook information on to the next in the chain

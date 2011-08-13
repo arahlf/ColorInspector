@@ -82,6 +82,8 @@
       <DependentUpon>InspectorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Gdi32.cs" />
+    <Compile Include="IMouseMoveListener.cs" />
+    <Compile Include="MouseMoveHook.cs" />
     <Compile Include="Hooking.cs" />
     <Compile Include="Kernel32.cs" />
     <Compile Include="PicturePanel.cs">
@@ -89,6 +91,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="ColorInputDialog.resx">
       <DependentUpon>ColorInputDialog.cs</DependentUpon>
     </EmbeddedResource>
