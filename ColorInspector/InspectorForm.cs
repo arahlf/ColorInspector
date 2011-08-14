@@ -7,9 +7,17 @@ namespace ColorInspector
 {
     public partial class InspectorForm : Form, IMouseMoveListener
     {
-        public InspectorForm()
+        public InspectorForm(int size, int quadrantSize)
         {
             InitializeComponent();
+
+            SIZE = size;
+            QUAD_SIZE = quadrantSize;
+            ZOOM_SIZE = QUAD_SIZE * 2 + 1;
+            HALF = (size - 1) / 2;
+
+            ZOOM_SRC = new Rectangle(HALF - QUAD_SIZE, HALF - QUAD_SIZE, ZOOM_SIZE, ZOOM_SIZE);
+            ZOOM_DST = new Rectangle(0, 0, SIZE, SIZE);
 
             ToolTip toolTip = new ToolTip();
             toolTip.SetToolTip(btnInspect, "Press and drag to begin inspecting.");
@@ -38,7 +46,13 @@ namespace ColorInspector
             bmpZoomGraphics.PixelOffsetMode = PixelOffsetMode.Half;
 
             // create the zoomed image by transferring part of the scan
-            bmpZoomGraphics.DrawImage(bmpScan, DST_RECT, SRC_RECT, GraphicsUnit.Pixel);
+            bmpZoomGraphics.DrawImage(bmpScan, ZOOM_DST, ZOOM_SRC, GraphicsUnit.Pixel);
+
+            // draw the crosses to divide each panel into 4 quadrants
+            bmpScanGraphics.DrawLine(Pens.Black, 0, HALF, SIZE, HALF);
+            bmpScanGraphics.DrawLine(Pens.Black, HALF, 0, HALF, SIZE);
+            bmpZoomGraphics.DrawLine(Pens.Black, 0, HALF + 1, SIZE, HALF + 1); // + 1's needed for the pixeloffsetmode
+            bmpZoomGraphics.DrawLine(Pens.Black, HALF + 1, 0, HALF + 1, SIZE);
 
             bmpScanGraphics.Dispose();
             bmpZoomGraphics.Dispose();
@@ -53,24 +67,16 @@ namespace ColorInspector
                 pnlScanGraphics.DrawImage(bmpScan, 0, 0);
                 pnlZoomGraphics.DrawImage(bmpZoom, 0, 0);
 
-                // draw the crosses to divide each panel into 4 quadrants
-                pnlScanGraphics.DrawLine(Pens.Black, 0, HALF, SIZE, HALF);
-                pnlScanGraphics.DrawLine(Pens.Black, HALF, 0, HALF, SIZE);
-                pnlZoomGraphics.DrawLine(Pens.Black, 0, HALF, SIZE, HALF);
-                pnlZoomGraphics.DrawLine(Pens.Black, HALF, 0, HALF, SIZE);
-
                 pnlScanGraphics.Dispose();
                 pnlZoomGraphics.Dispose();
             }
         }
 
-
-        // called by the hook procedure that was installed in the constructor
         public void OnMouseMove(int x, int y)
         {
             if (scanning) {
                 updateImages(x, y);
-                updateColorControls(bmpScan.GetPixel(HALF, HALF));
+                updateColorControls(bmpZoom.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
                 
                 drawImages();
             }
@@ -78,32 +84,30 @@ namespace ColorInspector
             this.lblMouseCoords.Text = "Mouse Location: " + x + ", " + y;
         }
 
-        // update the color translations when the 900% view is clicked
         private void pnlZoomClick(object sender, MouseEventArgs e) {
             if (bmpZoom != null) {
-                int xTile = (int) Math.Floor((double)(e.X / 9));
-                int yTile = (int) Math.Floor((double)(e.Y / 9));
+                int xTile = (int) Math.Floor((double)(e.X / ZOOM_SIZE));
+                int yTile = (int) Math.Floor((double)(e.Y / ZOOM_SIZE));
 
-                updateColorControls(bmpZoom.GetPixel(xTile * 9 + 5, yTile * 9 + 5));
+                updateColorControls(bmpZoom.GetPixel(xTile * ZOOM_SIZE, yTile * ZOOM_SIZE));
             }
         }
 
-        // updates the rgb/hex values
-        private void updateColorControls(Color c) {
-            this.txtColorHex.Text = ColorTranslator.ToHtml(c).ToLower();
-            this.txtRGB.Text = c.R + ", " + c.G + ", " + c.B;
-            this.pnlColor.BackColor = c;
+        private void updateColorControls(Color color) {
+            this.txtColorHex.Text = ColorTranslator.ToHtml(color).ToLower();
+            this.txtRGB.Text = color.R + ", " + color.G + ", " + color.B;
+            this.pnlColor.BackColor = color;
         }
 
-        private void _btnInspectMouseUp(object sender, MouseEventArgs e) {
+        private void OnInspectMouseUp(object sender, MouseEventArgs e) {
             scanning = false;
         }
 
-        private void _btnInspectMouseDown(object sender, MouseEventArgs e) {
+        private void OnInspectMouseDown(object sender, MouseEventArgs e) {
             scanning = true;
         }
 
-        private void ColorInspector_Paint(object sender, PaintEventArgs e) {
+        private void OnPaint(object sender, PaintEventArgs e) {
             drawImages();
         }
 
@@ -121,13 +125,17 @@ namespace ColorInspector
             }
             else if (WindowState == FormWindowState.Normal) {
                 hook.Resume();
+                drawImages();
             }
         }
 
-        private const int SIZE = 81;
-        private const int HALF = SIZE / 2; // expecting the truncation
-        private readonly Rectangle SRC_RECT = new Rectangle(36, 36, 9, 9);
-        private readonly Rectangle DST_RECT = new Rectangle(0, 0, SIZE, SIZE);
+        private readonly int SIZE;
+        private readonly int QUAD_SIZE;
+        private readonly int ZOOM_SIZE;
+        private readonly int HALF;
+        private readonly Rectangle ZOOM_SRC;
+        private readonly Rectangle ZOOM_DST;
+
         private Bitmap bmpScan;
         private Bitmap bmpZoom;
         private MouseMoveHook hook;

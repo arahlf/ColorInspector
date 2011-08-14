@@ -1,7 +1,3 @@
-﻿might be a small memory leak yet
-refactor main form to make memory management more logical
-show some kind of message when an invalid color is entered
-less hard-coding of math values
-make paint more intelligent
+﻿show some kind of message when an invalid color is entered
 cleanup usings
-try to not draw pen lines each time
+try to not draw pen lines each time -- grab min pixel instead of the center

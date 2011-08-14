@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace ColorInspector
@@ -15,7 +13,7 @@ namespace ColorInspector
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InspectorForm());
+            Application.Run(new InspectorForm(81, 4));
         }
     }
 }

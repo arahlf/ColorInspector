@@ -75,8 +75,8 @@
             this.btnInspect.TabIndex = 4;
             this.btnInspect.Text = "Inspect";
             this.btnInspect.UseVisualStyleBackColor = true;
-            this.btnInspect.MouseDown += new System.Windows.Forms.MouseEventHandler(this._btnInspectMouseDown);
-            this.btnInspect.MouseUp += new System.Windows.Forms.MouseEventHandler(this._btnInspectMouseUp);
+            this.btnInspect.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnInspectMouseDown);
+            this.btnInspect.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnInspectMouseUp);
             // 
             // lblMouseCoords
             // 
@@ -187,7 +187,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Color Inspector";
             this.TopMost = true;
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ColorInspector_Paint);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             this.Resize += new System.EventHandler(this.OnFormResize);
             this.ResumeLayout(false);
             this.PerformLayout();
