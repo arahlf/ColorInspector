@@ -85,7 +85,6 @@
     <Compile Include="IMouseMoveListener.cs" />
     <Compile Include="MouseMessages.cs" />
     <Compile Include="MouseMoveHook.cs" />
-    <Compile Include="Hooking.cs" />
     <Compile Include="Kernel32.cs" />
     <Compile Include="MSLLHookStruct.cs" />
     <Compile Include="PicturePanel.cs">
