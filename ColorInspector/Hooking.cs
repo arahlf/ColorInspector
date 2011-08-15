@@ -10,11 +10,8 @@ namespace ColorInspector
     /// </summary>
     public class Hooking
     {
-        // delegates are used as an alternative to function pointers
-        public delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
-
         private static IntPtr hook = IntPtr.Zero;                          // handle to the hook
-        private static HookProc hookProc;                                  // callback function for the hook
+        private static User32.HookProc hookProc;                                  // callback function for the hook
         private static IMouseMoveListener mouseHandler;                          // user specified callback function
         private const int WH_MOUSE_LL = 14;                                // specifies a low level mouse hook, as defined in WinUser.h
 
