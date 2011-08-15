@@ -83,12 +83,15 @@
     </Compile>
     <Compile Include="Gdi32.cs" />
     <Compile Include="IMouseMoveListener.cs" />
+    <Compile Include="MouseMessages.cs" />
     <Compile Include="MouseMoveHook.cs" />
     <Compile Include="Hooking.cs" />
     <Compile Include="Kernel32.cs" />
+    <Compile Include="MSLLHookStruct.cs" />
     <Compile Include="PicturePanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />

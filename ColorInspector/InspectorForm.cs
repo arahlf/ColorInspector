@@ -119,16 +119,6 @@ namespace ColorInspector
             pnlColor.BackColor = inputDialog.getColor();
         }
 
-        private void OnFormResize(object sender, EventArgs e) {
-            if (WindowState == FormWindowState.Minimized) {
-                hook.Suspend();
-            }
-            else if (WindowState == FormWindowState.Normal) {
-                hook.Resume();
-                drawImages();
-            }
-        }
-
         private readonly int SIZE;
         private readonly int QUAD_SIZE;
         private readonly int ZOOM_SIZE;

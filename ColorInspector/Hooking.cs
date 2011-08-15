@@ -13,7 +13,6 @@ namespace ColorInspector
         // delegates are used as an alternative to function pointers
         public delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
 
-        private static Rectangle screenRect = Utils.GetScreenRectangle(); // width/height of the user's desktop
         private static IntPtr hook = IntPtr.Zero;                          // handle to the hook
         private static HookProc hookProc;                                  // callback function for the hook
         private static IMouseMoveListener mouseHandler;                          // user specified callback function
@@ -38,9 +37,9 @@ namespace ColorInspector
             if (nCode >= 0 && MouseMessages.WM_MOUSEMOVE == (MouseMessages) wParam)
             {
                 // convert the unmanged pointer to a managed instance of the hook structure
-                MSLLHOOKSTRUCT hookStruct = (MSLLHOOKSTRUCT) Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
+                MSLLHookStruct hookStruct = (MSLLHookStruct) Marshal.PtrToStructure(lParam, typeof(MSLLHookStruct));
 
-                ConstrainToDesktop(ref hookStruct.pt);
+                Utils.ConstrainToDesktop(ref hookStruct.pt);
 
                 // call the user-specified function with the x/y coordinates of the event
                 mouseHandler.OnMouseMove(hookStruct.pt.x, hookStruct.pt.y);
@@ -55,60 +54,6 @@ namespace ColorInspector
         public static bool DestroyHook()
         {
             return User32.UnhookWindowsHookEx(hook);
-        }
-
-
-        /// <summary>
-        /// ensures that the x,y coordinates returned by the hook do not exceed that of the actual desktop
-        /// </summary>
-        /// <param name="p">reference to the point structure passed into the hook callback</param>
-        private static void ConstrainToDesktop(ref POINT p)
-        {
-            // validate x coordinate
-            if (p.x < 0) {
-                p.x = 0;
-            }
-
-            if (p.x > screenRect.Width - 1) {
-                p.x = screenRect.Width - 1;
-            }
-
-            // validate y coordinate
-            if (p.y < 0) {
-                p.y = 0;
-            }
-
-            if (p.y > screenRect.Height - 1) {
-                p.y = screenRect.Height - 1;
-            }
-        }
-
-
-        public enum MouseMessages
-        {
-            WM_LBUTTONDOWN = 0x0201,
-            WM_LBUTTONUP = 0x0202,
-            WM_MOUSEMOVE = 0x0200,
-            WM_MOUSEWHEEL = 0x020A,
-            WM_RBUTTONDOWN = 0x0204,
-            WM_RBUTTONUP = 0x0205
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct POINT
-        {
-            public int x;
-            public int y;
-        }
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct MSLLHOOKSTRUCT
-        {
-            public POINT pt;
-            public uint mouseData;
-            public uint flags;
-            public uint time;
-            public IntPtr dwExtraInfo;
         }
     }
 }

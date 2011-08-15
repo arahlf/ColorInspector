@@ -5,6 +5,10 @@ namespace ColorInspector
 {
     public class Utils
     {
+        static Utils() {
+            SCREEN = new Rectangle(0, 0, User32.GetSystemMetrics(SM_CXVIRTUALSCREEN), User32.GetSystemMetrics(SM_CYVIRTUALSCREEN));
+        }
+
         public static Bitmap CaptureDesktopWindow(int x, int y, int width, int height) {
             // get the handle to the desktop window
             IntPtr handle = User32.GetDesktopWindow();
@@ -44,9 +48,27 @@ namespace ColorInspector
             return bmp;
         }
 
-        public static Rectangle GetScreenRectangle() {
-            return new Rectangle(0, 0, User32.GetSystemMetrics(SM_CXVIRTUALSCREEN), User32.GetSystemMetrics(SM_CYVIRTUALSCREEN));
+        public static void ConstrainToDesktop(ref Point p) {
+            // validate x coordinate
+            if (p.x < 0) {
+                p.x = 0;
+            }
+
+            if (p.x > SCREEN.Width - 1) {
+                p.x = SCREEN.Width - 1;
+            }
+
+            // validate y coordinate
+            if (p.y < 0) {
+                p.y = 0;
+            }
+
+            if (p.y > SCREEN.Height - 1) {
+                p.y = SCREEN.Height - 1;
+            }
         }
+
+        private static readonly Rectangle SCREEN;
 
         private const int SM_CXVIRTUALSCREEN = 78;
         private const int SM_CYVIRTUALSCREEN = 79;

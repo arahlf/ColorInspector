@@ -188,7 +188,6 @@
             this.Text = "Color Inspector";
             this.TopMost = true;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
-            this.Resize += new System.EventHandler(this.OnFormResize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
