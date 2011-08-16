@@ -53,7 +53,7 @@
             // txtColorHex
             // 
             this.txtColorHex.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtColorHex.Location = new System.Drawing.Point(309, 74);
+            this.txtColorHex.Location = new System.Drawing.Point(308, 72);
             this.txtColorHex.Name = "txtColorHex";
             this.txtColorHex.Size = new System.Drawing.Size(100, 23);
             this.txtColorHex.TabIndex = 2;
@@ -61,9 +61,10 @@
             // lblHex
             // 
             this.lblHex.AutoSize = true;
-            this.lblHex.Location = new System.Drawing.Point(310, 58);
+            this.lblHex.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHex.Location = new System.Drawing.Point(309, 56);
             this.lblHex.Name = "lblHex";
-            this.lblHex.Size = new System.Drawing.Size(29, 13);
+            this.lblHex.Size = new System.Drawing.Size(34, 13);
             this.lblHex.TabIndex = 3;
             this.lblHex.Text = "Hex:";
             // 
@@ -91,16 +92,17 @@
             // lblRGB
             // 
             this.lblRGB.AutoSize = true;
-            this.lblRGB.Location = new System.Drawing.Point(306, 12);
+            this.lblRGB.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRGB.Location = new System.Drawing.Point(305, 10);
             this.lblRGB.Name = "lblRGB";
-            this.lblRGB.Size = new System.Drawing.Size(33, 13);
+            this.lblRGB.Size = new System.Drawing.Size(37, 13);
             this.lblRGB.TabIndex = 7;
             this.lblRGB.Text = "RGB:";
             // 
             // txtRGB
             // 
             this.txtRGB.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRGB.Location = new System.Drawing.Point(309, 28);
+            this.txtRGB.Location = new System.Drawing.Point(308, 26);
             this.txtRGB.Name = "txtRGB";
             this.txtRGB.Size = new System.Drawing.Size(100, 23);
             this.txtRGB.TabIndex = 8;
@@ -143,7 +145,7 @@
             this.pnlColor.Name = "pnlColor";
             this.pnlColor.Size = new System.Drawing.Size(83, 83);
             this.pnlColor.TabIndex = 14;
-            this.pnlColor.Click += new System.EventHandler(this.pnlColor_Click);
+            this.pnlColor.Click += new System.EventHandler(this.OnColorClick);
             // 
             // pnlZoom
             // 
@@ -153,7 +155,7 @@
             this.pnlZoom.Name = "pnlZoom";
             this.pnlZoom.Size = new System.Drawing.Size(83, 83);
             this.pnlZoom.TabIndex = 12;
-            this.pnlZoom.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlZoomClick);
+            this.pnlZoom.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnZoomClick);
             // 
             // pnlScan
             // 

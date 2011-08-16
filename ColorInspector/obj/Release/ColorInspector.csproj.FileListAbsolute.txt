@@ -10,3 +10,13 @@ C:\Documents and Settings\Owner.Alan\Desktop\ColorInspector\ColorInspector\obj\R
 C:\Documents and Settings\Owner.Alan\Desktop\ColorInspector\ColorInspector\obj\Release\ColorInspector.ColorInspector.resources
 C:\Documents and Settings\Owner.Alan\Desktop\ColorInspector\ColorInspector\obj\Release\ColorInspector.Properties.Resources.resources
 C:\Documents and Settings\Owner.Alan\Desktop\ColorInspector\ColorInspector\obj\Release\ColorInspector.csproj.GenerateResource.Cache
+C:\dev\ColorInspector\ColorInspector\obj\Release\ColorInspector.pdb
+C:\dev\ColorInspector\ColorInspector\bin\Release\ColorInspector.exe
+C:\dev\ColorInspector\ColorInspector\bin\Release\ColorInspector.pdb
+C:\dev\ColorInspector\ColorInspector\obj\Release\ResolveAssemblyReference.cache
+C:\dev\ColorInspector\ColorInspector\obj\Release\ColorInspector.ColorInputDialog.resources
+C:\dev\ColorInspector\ColorInspector\obj\Release\ColorInspector.InspectorForm.resources
+C:\dev\ColorInspector\ColorInspector\obj\Release\ColorInspector.Properties.Resources.resources
+C:\dev\ColorInspector\ColorInspector\obj\Release\ResGen.read.1.tlog
+C:\dev\ColorInspector\ColorInspector\obj\Release\ResGen.write.1.tlog
+C:\dev\ColorInspector\ColorInspector\obj\Release\ColorInspector.exe

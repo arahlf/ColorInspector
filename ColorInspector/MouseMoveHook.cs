@@ -35,8 +35,8 @@ namespace ColorInspector
 
         private const int WH_MOUSE_LL = 14; // specifies a low-level mouse hook
 
+        private readonly IMouseMoveListener listener;
         private User32.HookProc hookProc;
         private IntPtr hook;
-        private IMouseMoveListener listener;
     }
 }

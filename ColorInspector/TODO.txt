@@ -1,3 +1,0 @@
-﻿show some kind of message when an invalid color is entered
-cleanup usings
-try to not draw pen lines each time -- grab min pixel instead of the center

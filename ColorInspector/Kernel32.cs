@@ -8,10 +8,12 @@ namespace ColorInspector
     /// </summary>
     public class Kernel32
     {
-        [DllImport("kernel32.dll")]
+        [DllImport(KERNEL32)]
         public static extern IntPtr GetModuleHandle(string lpModuleName);
 
-        [DllImport("kernel32.dll")]
+        [DllImport(KERNEL32)]
         public static extern int GetLastError();
+
+        private const string KERNEL32 = "kernel32.dll";
     }
 }

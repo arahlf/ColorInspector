@@ -27,7 +27,19 @@ namespace ColorInspector
             hook = new MouseMoveHook(this);
         }
 
-        private void updateImages(int x, int y) {
+        public void OnMouseMove(int x, int y)
+        {
+            if (scanning) {
+                UpdateImages(x, y);
+                UpdateColorControls(bmpZoom.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
+                
+                DrawImages();
+            }
+
+            this.lblMouseCoords.Text = "Mouse Location: " + x + ", " + y;
+        }
+
+        private void UpdateImages(int x, int y) {
             if (bmpScan != null) {
                 bmpScan.Dispose();
             }
@@ -40,7 +52,7 @@ namespace ColorInspector
 
             Graphics bmpScanGraphics = Graphics.FromImage(bmpScan);
             Graphics bmpZoomGraphics = Graphics.FromImage(bmpZoom);
-            
+
             // set properties to create the pixelated effect
             bmpZoomGraphics.InterpolationMode = InterpolationMode.NearestNeighbor;
             bmpZoomGraphics.PixelOffsetMode = PixelOffsetMode.Half;
@@ -58,8 +70,7 @@ namespace ColorInspector
             bmpZoomGraphics.Dispose();
         }
 
-        private void drawImages()
-        {
+        private void DrawImages() {
             if (bmpScan != null && bmpZoom != null) {
                 Graphics pnlScanGraphics = this.pnlScan.CreateGraphics();
                 Graphics pnlZoomGraphics = this.pnlZoom.CreateGraphics();
@@ -72,28 +83,16 @@ namespace ColorInspector
             }
         }
 
-        public void OnMouseMove(int x, int y)
-        {
-            if (scanning) {
-                updateImages(x, y);
-                updateColorControls(bmpZoom.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
-                
-                drawImages();
-            }
-
-            this.lblMouseCoords.Text = "Mouse Location: " + x + ", " + y;
-        }
-
-        private void pnlZoomClick(object sender, MouseEventArgs e) {
+        private void OnZoomClick(object sender, MouseEventArgs e) {
             if (bmpZoom != null) {
                 int xTile = (int) Math.Floor((double)(e.X / ZOOM_SIZE));
                 int yTile = (int) Math.Floor((double)(e.Y / ZOOM_SIZE));
 
-                updateColorControls(bmpZoom.GetPixel(xTile * ZOOM_SIZE, yTile * ZOOM_SIZE));
+                UpdateColorControls(bmpZoom.GetPixel(xTile * ZOOM_SIZE, yTile * ZOOM_SIZE));
             }
         }
 
-        private void updateColorControls(Color color) {
+        private void UpdateColorControls(Color color) {
             this.txtColorHex.Text = ColorTranslator.ToHtml(color).ToLower();
             this.txtRGB.Text = color.R + ", " + color.G + ", " + color.B;
             this.pnlColor.BackColor = color;
@@ -108,15 +107,15 @@ namespace ColorInspector
         }
 
         private void OnPaint(object sender, PaintEventArgs e) {
-            drawImages();
+            DrawImages();
         }
 
-        private void pnlColor_Click(object sender, EventArgs e) {
+        private void OnColorClick(object sender, EventArgs e) {
             ColorInputDialog inputDialog = new ColorInputDialog();
 
             inputDialog.ShowDialog();
 
-            pnlColor.BackColor = inputDialog.getColor();
+            pnlColor.BackColor = inputDialog.GetColor();
         }
 
         private readonly int SIZE;

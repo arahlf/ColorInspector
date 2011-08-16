@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ColorInspector
@@ -16,16 +11,32 @@ namespace ColorInspector
         }
 
         private void OnSubmit(object sender, EventArgs e) {
-            this.Hide();
+            if (this.GetColor() != Color.Empty) {
+                this.Hide();
+            }
+            else {
+                this.lblInvalidColor.Show();
+            }
         }
 
-        public Color getColor() {
+        public Color GetColor() {
+            String input = this.txtColor.Text;
+            Color color = Color.Empty;
+
             try {
-                return ColorTranslator.FromHtml(this.txtColor.Text);
+                color = ColorTranslator.FromHtml(input);
             }
             catch (Exception) {
-                return Color.Empty;
+                // shortcut for hex w/o hash
+                try {
+                    color = ColorTranslator.FromHtml("#" + input);
+                }
+                catch (Exception) {
+                    // ignored
+                }
             }
+
+            return color;
         }
     }
 }
