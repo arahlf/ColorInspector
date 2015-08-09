@@ -77,7 +77,6 @@
             this.btnInspect.Text = "Inspect";
             this.btnInspect.UseVisualStyleBackColor = true;
             this.btnInspect.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnInspectMouseDown);
-            this.btnInspect.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnInspectMouseUp);
             // 
             // lblMouseCoords
             // 

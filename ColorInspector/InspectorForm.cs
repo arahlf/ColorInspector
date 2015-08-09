@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 
 namespace ColorInspector
 {
-    public partial class InspectorForm : Form, IMouseMoveListener
+    public partial class InspectorForm : Form, MouseHookListener
     {
         public InspectorForm(int size, int quadrantSize)
         {
@@ -24,10 +24,10 @@ namespace ColorInspector
             toolTip.SetToolTip(pnlZoom, "Click a color to select it.");
             toolTip.SetToolTip(pnlColor, "Click to change colors.");
 
-            hook = new MouseMoveHook(this);
+            hook = new MouseHook(this);
         }
 
-        public void OnMouseMove(int x, int y)
+        public void onMouseMove(int x, int y)
         {
             this.lblMouseCoords.Text = "Mouse Location: " + x + ", " + y;
 
@@ -42,6 +42,12 @@ namespace ColorInspector
 
                 UpdateImages(x, y);
                 UpdateColorControls(bmpZoom.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
+            }
+        }
+
+        public void onMouseUp(int x, int y) {
+            if (scanning) {
+                scanning = false;           
             }
         }
 
@@ -88,10 +94,6 @@ namespace ColorInspector
             this.pnlColor.BackColor = color;
         }
 
-        private void OnInspectMouseUp(object sender, MouseEventArgs e) {
-            scanning = false;
-        }
-
         private void OnInspectMouseDown(object sender, MouseEventArgs e) {
             scanning = true;
         }
@@ -115,7 +117,7 @@ namespace ColorInspector
 
         private Bitmap bmpScan;
         private Bitmap bmpZoom;
-        private MouseMoveHook hook;
+        private MouseHook hook;
         private bool scanning;
         private DateTime nextAllowableCaptureTime = DateTime.Now;
     }

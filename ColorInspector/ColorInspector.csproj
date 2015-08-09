@@ -82,9 +82,9 @@
       <DependentUpon>InspectorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Gdi32.cs" />
-    <Compile Include="IMouseMoveListener.cs" />
+    <Compile Include="MouseHookListener.cs" />
     <Compile Include="MouseMessages.cs" />
-    <Compile Include="MouseMoveHook.cs" />
+    <Compile Include="MouseHook.cs" />
     <Compile Include="Kernel32.cs" />
     <Compile Include="MSLLHookStruct.cs" />
     <Compile Include="PicturePanel.cs">
