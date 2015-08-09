@@ -11,9 +11,6 @@ namespace ColorInspector
         [DllImport(KERNEL32)]
         public static extern IntPtr GetModuleHandle(string lpModuleName);
 
-        [DllImport(KERNEL32)]
-        public static extern int GetLastError();
-
         private const string KERNEL32 = "kernel32.dll";
     }
 }

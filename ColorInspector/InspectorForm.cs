@@ -106,10 +106,6 @@ namespace ColorInspector
             scanning = true;
         }
 
-        private void OnPaint(object sender, PaintEventArgs e) {
-            DrawImages();
-        }
-
         private void OnColorClick(object sender, EventArgs e) {
             ColorInputDialog inputDialog = new ColorInputDialog();
 
