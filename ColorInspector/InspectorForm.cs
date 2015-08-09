@@ -42,8 +42,6 @@ namespace ColorInspector
 
                 UpdateImages(x, y);
                 UpdateColorControls(bmpZoom.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
-                
-                DrawImages();
             }
         }
 
@@ -68,27 +66,11 @@ namespace ColorInspector
             // create the zoomed image by transferring part of the scan
             bmpZoomGraphics.DrawImage(bmpScan, ZOOM_DST, ZOOM_SRC, GraphicsUnit.Pixel);
 
-            // draw the crosses to divide each panel into 4 quadrants
-            bmpScanGraphics.DrawLine(Pens.Black, 0, HALF, SIZE, HALF);
-            bmpScanGraphics.DrawLine(Pens.Black, HALF, 0, HALF, SIZE);
-            bmpZoomGraphics.DrawLine(Pens.Black, 0, HALF + 1, SIZE, HALF + 1); // + 1's needed for the pixeloffsetmode
-            bmpZoomGraphics.DrawLine(Pens.Black, HALF + 1, 0, HALF + 1, SIZE);
-
             bmpScanGraphics.Dispose();
             bmpZoomGraphics.Dispose();
-        }
 
-        private void DrawImages() {
-            if (bmpScan != null && bmpZoom != null) {
-                Graphics pnlScanGraphics = this.pnlScan.CreateGraphics();
-                Graphics pnlZoomGraphics = this.pnlZoom.CreateGraphics();
-
-                pnlScanGraphics.DrawImage(bmpScan, 0, 0);
-                pnlZoomGraphics.DrawImage(bmpZoom, 0, 0);
-
-                pnlScanGraphics.Dispose();
-                pnlZoomGraphics.Dispose();
-            }
+            pnlScan.setBackgroundBitmap(bmpScan);
+            pnlZoom.setBackgroundBitmap(bmpZoom);
         }
 
         private void OnZoomClick(object sender, MouseEventArgs e) {

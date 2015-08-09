@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ColorInspector
@@ -14,5 +15,27 @@ namespace ColorInspector
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
+
+        public void setBackgroundBitmap(Bitmap backgroundBitmap) {
+            _backgroundBitmap = backgroundBitmap;
+
+            Invalidate();
+        }
+
+        protected override void OnPaint(PaintEventArgs e) {
+            base.OnPaint(e);
+
+            if (_backgroundBitmap != null) {
+                e.Graphics.DrawImage(_backgroundBitmap, 0, 0);
+
+                int widthWithoutBorder = this.Width - 2;
+                int half = widthWithoutBorder / 2;
+
+                e.Graphics.DrawLine(Pens.Black, 0, half, widthWithoutBorder, half);
+                e.Graphics.DrawLine(Pens.Black, half, 0, half, widthWithoutBorder);
+            }
+        }
+
+        private Bitmap _backgroundBitmap;
     }
 }
