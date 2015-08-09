@@ -29,14 +29,22 @@ namespace ColorInspector
 
         public void OnMouseMove(int x, int y)
         {
+            this.lblMouseCoords.Text = "Mouse Location: " + x + ", " + y;
+
             if (scanning) {
+                DateTime currentTime = DateTime.Now;
+
+                if (currentTime < nextAllowableCaptureTime) {
+                    return;
+                }
+
+                nextAllowableCaptureTime = currentTime.AddMilliseconds(SCAN_UPDATE_THROTTLE_MILLIS);
+
                 UpdateImages(x, y);
                 UpdateColorControls(bmpZoom.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
                 
                 DrawImages();
             }
-
-            this.lblMouseCoords.Text = "Mouse Location: " + x + ", " + y;
         }
 
         private void UpdateImages(int x, int y) {
@@ -114,6 +122,8 @@ namespace ColorInspector
             pnlColor.BackColor = inputDialog.GetColor();
         }
 
+        private const int SCAN_UPDATE_THROTTLE_MILLIS = 50;
+
         private readonly int SIZE;
         private readonly int QUAD_SIZE;
         private readonly int ZOOM_SIZE;
@@ -125,5 +135,6 @@ namespace ColorInspector
         private Bitmap bmpZoom;
         private MouseMoveHook hook;
         private bool scanning;
+        private DateTime nextAllowableCaptureTime = DateTime.Now;
     }
 }
