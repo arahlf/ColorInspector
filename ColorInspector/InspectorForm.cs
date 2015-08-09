@@ -41,7 +41,7 @@ namespace ColorInspector
                 nextAllowableCaptureTime = currentTime.AddMilliseconds(SCAN_UPDATE_THROTTLE_MILLIS);
 
                 UpdateImages(x, y);
-                UpdateColorControls(bmpZoom.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
+                UpdateColorControls(pnlZoom.BackgroundBitmap.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
             }
         }
 
@@ -52,39 +52,28 @@ namespace ColorInspector
         }
 
         private void UpdateImages(int x, int y) {
-            if (bmpScan != null) {
-                bmpScan.Dispose();
+            Bitmap bmpScan = Utils.CaptureDesktopWindow(x, y, SIZE, SIZE);
+            Bitmap bmpZoom = new Bitmap(SIZE, SIZE);
+
+            using (Graphics bmpZoomGraphics = Graphics.FromImage(bmpZoom)) {
+                // set properties to create the pixelated effect
+                bmpZoomGraphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                bmpZoomGraphics.PixelOffsetMode = PixelOffsetMode.Half;
+
+                // create the zoomed image by transferring part of the scan
+                bmpZoomGraphics.DrawImage(bmpScan, ZOOM_DST, ZOOM_SRC, GraphicsUnit.Pixel);
             }
-            if (bmpZoom != null) {
-                bmpZoom.Dispose();
-            }
 
-            bmpScan = Utils.CaptureDesktopWindow(x, y, SIZE, SIZE);
-            bmpZoom = new Bitmap(SIZE, SIZE);
-
-            Graphics bmpScanGraphics = Graphics.FromImage(bmpScan);
-            Graphics bmpZoomGraphics = Graphics.FromImage(bmpZoom);
-
-            // set properties to create the pixelated effect
-            bmpZoomGraphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-            bmpZoomGraphics.PixelOffsetMode = PixelOffsetMode.Half;
-
-            // create the zoomed image by transferring part of the scan
-            bmpZoomGraphics.DrawImage(bmpScan, ZOOM_DST, ZOOM_SRC, GraphicsUnit.Pixel);
-
-            bmpScanGraphics.Dispose();
-            bmpZoomGraphics.Dispose();
-
-            pnlScan.setBackgroundBitmap(bmpScan);
-            pnlZoom.setBackgroundBitmap(bmpZoom);
+            pnlScan.updateBackgroundBitmap(bmpScan);
+            pnlZoom.updateBackgroundBitmap(bmpZoom);
         }
 
         private void OnZoomClick(object sender, MouseEventArgs e) {
-            if (bmpZoom != null) {
+            if (pnlZoom.BackgroundBitmap != null) {
                 int xTile = (int) Math.Floor((double)(e.X / ZOOM_SIZE));
                 int yTile = (int) Math.Floor((double)(e.Y / ZOOM_SIZE));
 
-                UpdateColorControls(bmpZoom.GetPixel(xTile * ZOOM_SIZE, yTile * ZOOM_SIZE));
+                UpdateColorControls(pnlZoom.BackgroundBitmap.GetPixel(xTile * ZOOM_SIZE, yTile * ZOOM_SIZE));
             }
         }
 
@@ -115,8 +104,6 @@ namespace ColorInspector
         private readonly Rectangle ZOOM_SRC;
         private readonly Rectangle ZOOM_DST;
 
-        private Bitmap bmpScan;
-        private Bitmap bmpZoom;
         private MouseHook hook;
         private bool scanning;
         private DateTime nextAllowableCaptureTime = DateTime.Now;

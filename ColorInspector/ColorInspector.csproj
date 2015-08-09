@@ -81,11 +81,11 @@
     <Compile Include="InspectorForm.Designer.cs">
       <DependentUpon>InspectorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gdi32.cs" />
+    <Compile Include="DllWrappers\Gdi32.cs" />
     <Compile Include="MouseHookListener.cs" />
     <Compile Include="MouseMessages.cs" />
     <Compile Include="MouseHook.cs" />
-    <Compile Include="Kernel32.cs" />
+    <Compile Include="DllWrappers\Kernel32.cs" />
     <Compile Include="MSLLHookStruct.cs" />
     <Compile Include="PicturePanel.cs">
       <SubType>Component</SubType>
@@ -120,7 +120,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="User32.cs" />
+    <Compile Include="DllWrappers\User32.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />

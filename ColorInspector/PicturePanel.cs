@@ -16,7 +16,13 @@ namespace ColorInspector
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
-        public void setBackgroundBitmap(Bitmap backgroundBitmap) {
+        public Bitmap BackgroundBitmap {
+            get {
+                return _backgroundBitmap;
+            }
+        }
+
+        public void updateBackgroundBitmap(Bitmap backgroundBitmap) {
             _backgroundBitmap = backgroundBitmap;
 
             Invalidate();
