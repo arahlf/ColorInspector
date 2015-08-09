@@ -24,30 +24,30 @@ namespace ColorInspector
             toolTip.SetToolTip(pnlZoom, "Click a color to select it.");
             toolTip.SetToolTip(pnlColor, "Click to change colors.");
 
-            hook = new MouseHook(this);
+            _mouseHook = new MouseHook(this);
         }
 
         public void onMouseMove(int x, int y)
         {
             this.lblMouseCoords.Text = "Mouse Location: " + x + ", " + y;
 
-            if (scanning) {
+            if (_scanning) {
                 DateTime currentTime = DateTime.Now;
 
-                if (currentTime < nextAllowableCaptureTime) {
+                if (currentTime < _nextAllowableCaptureTime) {
                     return;
                 }
 
-                nextAllowableCaptureTime = currentTime.AddMilliseconds(SCAN_UPDATE_THROTTLE_MILLIS);
+                _nextAllowableCaptureTime = currentTime.AddMilliseconds(SCAN_UPDATE_THROTTLE_MILLIS);
 
                 UpdateImages(x, y);
-                UpdateColorControls(pnlZoom.BackgroundBitmap.GetPixel(HALF - 1, HALF - 1)); // - 1 to avoid the pen line
+                UpdateColorControls(pnlZoom.BackgroundBitmap.GetPixel(HALF, HALF));
             }
         }
 
         public void onMouseUp(int x, int y) {
-            if (scanning) {
-                scanning = false;           
+            if (_scanning) {
+                _scanning = false;           
             }
         }
 
@@ -84,7 +84,7 @@ namespace ColorInspector
         }
 
         private void OnInspectMouseDown(object sender, MouseEventArgs e) {
-            scanning = true;
+            _scanning = true;
         }
 
         private void OnColorClick(object sender, EventArgs e) {
@@ -104,8 +104,8 @@ namespace ColorInspector
         private readonly Rectangle ZOOM_SRC;
         private readonly Rectangle ZOOM_DST;
 
-        private MouseHook hook;
-        private bool scanning;
-        private DateTime nextAllowableCaptureTime = DateTime.Now;
+        private MouseHook _mouseHook;
+        private bool _scanning;
+        private DateTime _nextAllowableCaptureTime = DateTime.Now;
     }
 }

@@ -20,8 +20,8 @@
                     components.Dispose();
                 }
 
-                if (hook != null) {
-                    hook.Dispose();
+                if (_mouseHook != null) {
+                    _mouseHook.Dispose();
                 }
             }
             base.Dispose(disposing);
