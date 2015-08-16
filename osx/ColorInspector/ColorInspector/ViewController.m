@@ -6,20 +6,34 @@
 //  Copyright (c) 2015 Alan Rahlf. All rights reserved.
 //
 
+#import <ApplicationServices/ApplicationServices.h>
+#import <CoreGraphics/CoreGraphics.h>
 #import "ViewController.h"
+#import "MouseHook.h"
+
+@interface ViewController() <MouseHookDelegate>
+
+@property (strong, nonatomic) MouseHook *mouseHook;
+
+@property (weak) IBOutlet NSTextField *mouseLocationTextField;
+
+@end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view.
+    
+    self.mouseHook = [[MouseHook alloc] init];
+    self.mouseHook.delegate = self;
 }
 
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
+- (void)onMouseMove:(CGPoint)point {
+    [self.mouseLocationTextField setStringValue:[NSString stringWithFormat:@"Mouse Location: %d, %d", (int)point.x, (int)point.y]];
+}
 
-    // Update the view, if already loaded.
+- (void)onMouseUp:(CGPoint)point {
+
 }
 
 @end

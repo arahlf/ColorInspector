@@ -13,6 +13,7 @@
 		1B6C8A401B783C5F00713D00 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6C8A3F1B783C5F00713D00 /* Images.xcassets */; };
 		1B6C8A431B783C5F00713D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B6C8A411B783C5F00713D00 /* Main.storyboard */; };
 		1B6C8A4F1B783C5F00713D00 /* ColorInspectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A4E1B783C5F00713D00 /* ColorInspectorTests.m */; };
+		1B6C8A5A1B7846A000713D00 /* MouseHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A591B7846A000713D00 /* MouseHook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,8 @@
 		1B6C8A481B783C5F00713D00 /* ColorInspectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorInspectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6C8A4D1B783C5F00713D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B6C8A4E1B783C5F00713D00 /* ColorInspectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorInspectorTests.m; sourceTree = "<group>"; };
+		1B6C8A581B7846A000713D00 /* MouseHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseHook.h; sourceTree = "<group>"; };
+		1B6C8A591B7846A000713D00 /* MouseHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouseHook.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				1B6C8A3F1B783C5F00713D00 /* Images.xcassets */,
 				1B6C8A411B783C5F00713D00 /* Main.storyboard */,
 				1B6C8A351B783C5F00713D00 /* Supporting Files */,
+				1B6C8A581B7846A000713D00 /* MouseHook.h */,
+				1B6C8A591B7846A000713D00 /* MouseHook.m */,
 			);
 			path = ColorInspector;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B6C8A5A1B7846A000713D00 /* MouseHook.m in Sources */,
 				1B6C8A3E1B783C5F00713D00 /* ViewController.m in Sources */,
 				1B6C8A3B1B783C5F00713D00 /* main.m in Sources */,
 				1B6C8A391B783C5F00713D00 /* AppDelegate.m in Sources */,
