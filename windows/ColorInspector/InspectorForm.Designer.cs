@@ -70,9 +70,9 @@
             // 
             // btnInspect
             // 
-            this.btnInspect.Location = new System.Drawing.Point(309, 109);
+            this.btnInspect.Location = new System.Drawing.Point(307, 109);
             this.btnInspect.Name = "btnInspect";
-            this.btnInspect.Size = new System.Drawing.Size(100, 23);
+            this.btnInspect.Size = new System.Drawing.Size(102, 23);
             this.btnInspect.TabIndex = 4;
             this.btnInspect.Text = "Inspect";
             this.btnInspect.UseVisualStyleBackColor = true;
@@ -190,6 +190,7 @@
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
