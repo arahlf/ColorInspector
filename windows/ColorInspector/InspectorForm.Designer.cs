@@ -62,7 +62,7 @@
             // 
             this.lblHex.AutoSize = true;
             this.lblHex.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHex.Location = new System.Drawing.Point(309, 56);
+            this.lblHex.Location = new System.Drawing.Point(305, 56);
             this.lblHex.Name = "lblHex";
             this.lblHex.Size = new System.Drawing.Size(34, 13);
             this.lblHex.TabIndex = 3;
