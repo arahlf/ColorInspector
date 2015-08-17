@@ -14,6 +14,7 @@
 		1B6C8A431B783C5F00713D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B6C8A411B783C5F00713D00 /* Main.storyboard */; };
 		1B6C8A4F1B783C5F00713D00 /* ColorInspectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A4E1B783C5F00713D00 /* ColorInspectorTests.m */; };
 		1B6C8A5A1B7846A000713D00 /* MouseHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A591B7846A000713D00 /* MouseHook.m */; };
+		1BD34B811B8160810059EA1E /* InspectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD34B801B8160810059EA1E /* InspectButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		1B6C8A4E1B783C5F00713D00 /* ColorInspectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorInspectorTests.m; sourceTree = "<group>"; };
 		1B6C8A581B7846A000713D00 /* MouseHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseHook.h; sourceTree = "<group>"; };
 		1B6C8A591B7846A000713D00 /* MouseHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouseHook.m; sourceTree = "<group>"; };
+		1BD34B7F1B8160810059EA1E /* InspectButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectButton.h; sourceTree = "<group>"; };
+		1BD34B801B8160810059EA1E /* InspectButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				1B6C8A351B783C5F00713D00 /* Supporting Files */,
 				1B6C8A581B7846A000713D00 /* MouseHook.h */,
 				1B6C8A591B7846A000713D00 /* MouseHook.m */,
+				1BD34B7F1B8160810059EA1E /* InspectButton.h */,
+				1BD34B801B8160810059EA1E /* InspectButton.m */,
 			);
 			path = ColorInspector;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BD34B811B8160810059EA1E /* InspectButton.m in Sources */,
 				1B6C8A5A1B7846A000713D00 /* MouseHook.m in Sources */,
 				1B6C8A3E1B783C5F00713D00 /* ViewController.m in Sources */,
 				1B6C8A3B1B783C5F00713D00 /* main.m in Sources */,
@@ -413,6 +419,7 @@
 				1B6C8A541B783C5F00713D00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B6C8A551B783C5F00713D00 /* Build configuration list for PBXNativeTarget "ColorInspectorTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +428,7 @@
 				1B6C8A571B783C5F00713D00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
