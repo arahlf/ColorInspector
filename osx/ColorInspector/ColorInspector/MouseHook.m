@@ -27,7 +27,7 @@ CGEventRef handleCGEvent(CGEventTapProxy proxy, CGEventType type, CGEventRef eve
 {
     MouseHook *mouseHook = (__bridge MouseHook*)refcon;
     
-    if (type == kCGEventMouseMoved) {
+    if (type == kCGEventMouseMoved || type == kCGEventLeftMouseDragged) {
         [mouseHook.delegate onMouseMove:CGEventGetLocation(eventRef)];
     }
     else if (type == kCGEventLeftMouseUp) {

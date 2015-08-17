@@ -680,7 +680,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="801-k0-GLN" userLabel="ScanView">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="801-k0-GLN" userLabel="ScanView" customClass="CrosshairImageView">
                                 <rect key="frame" x="12" y="85" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="83" id="LMx-gt-iam"/>
@@ -688,7 +688,7 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="5Wi-nq-waE"/>
                             </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKs-TV-cKt" userLabel="ZoomView">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKs-TV-cKt" userLabel="ZoomView" customClass="CrosshairImageView">
                                 <rect key="frame" x="107" y="85" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="9Wj-Vk-6WC"/>
