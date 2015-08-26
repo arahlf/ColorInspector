@@ -11,6 +11,8 @@
 @implementation InspectButton
 
 - (void)mouseDown:(NSEvent *)theEvent {
+    // Specifically not calling super here because it prevents mouseUp from ever firing.
+    
     self.highlighted = YES;
     
     [self.delegate onMouseDown:self];
