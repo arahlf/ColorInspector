@@ -67,13 +67,11 @@
 }
 
 - (void)updateScanView:(CGPoint)point {
-    CGFloat scale = [[NSScreen mainScreen] backingScaleFactor];
-    
-    int halfWidth = 40 / scale; // TODO clean this up a bit
+    int size = 83;
     int xLoc = (int)point.x;
     int yLoc = (int)point.y;
      
-    CGRect rect = CGRectMake(xLoc - halfWidth, yLoc - halfWidth, halfWidth * 2, halfWidth * 2);
+    CGRect rect = CGRectMake(xLoc - (size / 2), yLoc - (size / 2), size, size);
      
     CGImageRef imageRef = CGDisplayCreateImageForRect(CGMainDisplayID(), rect);
      
@@ -109,7 +107,7 @@
     
     self.colorView.layer.backgroundColor = color.CGColor;
      
-    NSImage *image = [[NSImage alloc] initWithCGImage:imageRef size:NSZeroSize];
+    NSImage *image = [[NSImage alloc] initWithCGImage:imageRef size:NSMakeSize(size, size)];
      
     self.scanView.image = image;
      
