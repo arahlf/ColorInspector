@@ -68,17 +68,66 @@
 
 - (void)updateScanView:(CGPoint)point {
     int size = 83;
+    int halfSize = size / 2;
     int xLoc = (int)point.x;
     int yLoc = (int)point.y;
-     
-    CGRect rect = CGRectMake(xLoc - (size / 2), yLoc - (size / 2), size, size);
-     
-    CGImageRef imageRef = CGDisplayCreateImageForRect(CGMainDisplayID(), rect);
-     
-    CFDataRef dataRef = CGDataProviderCopyData(CGImageGetDataProvider(imageRef));
-     
-    const UInt8 *data = CFDataGetBytePtr(dataRef);
     
+    int wide = (int)CGDisplayPixelsWide(CGMainDisplayID()) - 1;
+    int high = (int)CGDisplayPixelsHigh(CGMainDisplayID()) - 1;
+    
+    int frameX = MAX(0, MIN(wide - size, xLoc - halfSize));
+    int frameY = MAX(0, MIN(high - size, yLoc - halfSize));
+    
+    CGRect rect = CGRectMake(frameX, frameY, size, size);
+    
+    CGImageRef imageRef = CGDisplayCreateImageForRect(CGMainDisplayID(), rect);
+    
+    CGFloat scale = [NSScreen mainScreen].backingScaleFactor;
+    
+    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB); // TODO store this off perm?
+    
+    CGContextRef scanContext = CGBitmapContextCreate(NULL, size * scale, size * scale, 8, 0, colorSpaceRef, (CGBitmapInfo)kCGImageAlphaNoneSkipLast);
+    
+    int adjustedX = 0;
+    int adjustedY = 0;
+    
+    if (xLoc < halfSize) {
+        adjustedX = (halfSize - xLoc) * scale;
+    }
+    
+    if (yLoc < halfSize) {
+        adjustedY = -((halfSize - yLoc) * scale);
+    }
+    
+    if (xLoc > (wide - halfSize)) {
+        adjustedX = -((xLoc - (wide - halfSize)) * scale);
+    }
+    
+    if (yLoc > (high - halfSize)) {
+        adjustedY = (yLoc - (high - halfSize)) * scale;
+    }
+    
+    CGContextDrawImage(scanContext, CGRectMake(adjustedX, adjustedY, rect.size.width * scale, rect.size.height * scale), imageRef);
+    
+    CGImageRef ref = CGBitmapContextCreateImage(scanContext);
+    
+    NSImage *image = [[NSImage alloc] initWithCGImage:ref size:NSMakeSize(size, size)];
+    NSImage *debugImage = [[NSImage alloc] initWithCGImage:imageRef size:NSMakeSize(size, size)];
+    
+    self.scanView.image = image;
+    self.zoomView.image = debugImage;
+    
+    [self loadColorInfo:ref];
+    
+    CGContextRelease(scanContext);
+    CGImageRelease(ref);
+    CGColorSpaceRelease(colorSpaceRef);
+    
+
+    CGImageRelease(imageRef);
+}
+
+- (void)loadColorInfo:(CGImageRef)imageRef {
     size_t bytesPerRow = CGImageGetBytesPerRow(imageRef);
     size_t bitsPerPixel = CGImageGetBitsPerPixel(imageRef);
     size_t bitsPerComponent = CGImageGetBitsPerComponent(imageRef);
@@ -88,11 +137,16 @@
     size_t imageHeight = CGImageGetHeight(imageRef);
     size_t centerX = (imageWidth / 2) - 1;
     size_t centerY = (imageHeight / 2) - 1;
+    
+    CFDataRef dataRef = CGDataProviderCopyData(CGImageGetDataProvider(imageRef));
+    const UInt8 *data = CFDataGetBytePtr(dataRef);
+    
     size_t pixelInfo = (centerY * bytesPerRow) + (centerX * bytesPerPixel);
     
     CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
     
     BOOL isBGRA = (bitmapInfo & kCGBitmapByteOrderMask) == kCGBitmapByteOrder32Little;
+    
     int redIndexOffset = isBGRA ? 2 : 0;
     int blueIndexOffset = isBGRA ? 0 : 2;
     
@@ -106,13 +160,8 @@
     NSColor *color = [NSColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];
     
     self.colorView.layer.backgroundColor = color.CGColor;
-     
-    NSImage *image = [[NSImage alloc] initWithCGImage:imageRef size:NSMakeSize(size, size)];
-     
-    self.scanView.image = image;
-     
+    
     CFRelease(dataRef);
-    CGImageRelease(imageRef);
 }
 
 @end
