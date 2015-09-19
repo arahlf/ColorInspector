@@ -16,6 +16,7 @@
 
 @property (strong, nonatomic) MouseHook *mouseHook;
 @property (assign, nonatomic) BOOL scanning;
+@property (assign, nonatomic) CGColorSpaceRef colorSpace;
 
 @property (weak) IBOutlet NSTextField *mouseLocationField;
 @property (weak) IBOutlet NSTextField *rgbField;
@@ -36,6 +37,8 @@
     
     self.mouseHook = [[MouseHook alloc] init];
     self.mouseHook.delegate = self;
+    
+    self.colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
     
     [self addBorderToImageView:self.scanView];
     [self addBorderToImageView:self.zoomView];
@@ -67,7 +70,7 @@
 }
 
 - (void)updateScanView:(CGPoint)point {
-    int size = 83;
+    int size = 81;
     int halfSize = size / 2;
     int xLoc = (int)point.x;
     int yLoc = (int)point.y;
@@ -84,9 +87,8 @@
     
     CGFloat scale = [NSScreen mainScreen].backingScaleFactor;
     
-    CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB); // TODO store this off perm?
-    
-    CGContextRef scanContext = CGBitmapContextCreate(NULL, size * scale, size * scale, 8, 0, colorSpaceRef, (CGBitmapInfo)kCGImageAlphaNoneSkipLast);
+    CGContextRef scanContext = CGBitmapContextCreate(NULL, size * scale, size * scale, 8, 0, self.colorSpace, (CGBitmapInfo)kCGImageAlphaNoneSkipLast);
+    CGContextRef zoomContext = CGBitmapContextCreate(NULL, size * scale, size * scale, 8, 0, self.colorSpace, (CGBitmapInfo)kCGImageAlphaNoneSkipLast);
     
     int adjustedX = 0;
     int adjustedY = 0;
@@ -107,24 +109,37 @@
         adjustedY = (yLoc - (high - halfSize)) * scale;
     }
     
+    
     CGContextDrawImage(scanContext, CGRectMake(adjustedX, adjustedY, rect.size.width * scale, rect.size.height * scale), imageRef);
     
-    CGImageRef ref = CGBitmapContextCreateImage(scanContext);
+    CGImageRef scanImageRef = CGBitmapContextCreateImage(scanContext);
     
-    NSImage *image = [[NSImage alloc] initWithCGImage:ref size:NSMakeSize(size, size)];
-    NSImage *debugImage = [[NSImage alloc] initWithCGImage:imageRef size:NSMakeSize(size, size)];
+    CGRect zoomImageRect = CGRectMake(38 * scale, 38 * scale, 9, 9);
+    
+    CGImageRef zoomedImage = CGImageCreateWithImageInRect(scanImageRef, zoomImageRect);
+
+    CGContextSetInterpolationQuality(zoomContext, kCGInterpolationNone);
+    
+    CGContextDrawImage(zoomContext, CGRectMake(0, 0, size * scale, size * scale), zoomedImage);
+    
+    CGImageRef zoomImageRef = CGBitmapContextCreateImage(zoomContext);
+    
+    NSImage *image = [[NSImage alloc] initWithCGImage:scanImageRef size:CGSizeMake(size, size)];
+    NSImage *debugImage = [[NSImage alloc] initWithCGImage:zoomImageRef size:CGSizeMake(size, size)];
+
     
     self.scanView.image = image;
     self.zoomView.image = debugImage;
     
-    [self loadColorInfo:ref];
+    [self loadColorInfo:scanImageRef];
+    
     
     CGContextRelease(scanContext);
-    CGImageRelease(ref);
-    CGColorSpaceRelease(colorSpaceRef);
-    
-
+    CGContextRelease(zoomContext);
+    CGImageRelease(zoomImageRef);
+    CGImageRelease(scanImageRef);
     CGImageRelease(imageRef);
+    CGImageRelease(zoomedImage);
 }
 
 - (void)loadColorInfo:(CGImageRef)imageRef {
