@@ -695,6 +695,9 @@
                                     <constraint firstAttribute="height" constant="83" id="uyR-60-vNv"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="S5L-bA-4BN"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showCrosshairCursor" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X64-Hv-s2w" userLabel="ColorView">
                                 <rect key="frame" x="202" y="85" width="83" height="83"/>

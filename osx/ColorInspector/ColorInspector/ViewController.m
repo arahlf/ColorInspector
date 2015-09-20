@@ -11,8 +11,9 @@
 #import "ViewController.h"
 #import "InspectButton.h"
 #import "MouseHook.h"
+#import "CrosshairImageView.h"
 
-@interface ViewController() <InspectButtonDelegate, MouseHookDelegate>
+@interface ViewController() <InspectButtonDelegate, MouseHookDelegate, ColorSelectionDelegate>
 
 @property (strong, nonatomic) MouseHook *mouseHook;
 @property (assign, nonatomic) BOOL scanning;
@@ -21,8 +22,8 @@
 @property (weak) IBOutlet NSTextField *mouseLocationField;
 @property (weak) IBOutlet NSTextField *rgbField;
 @property (weak) IBOutlet NSTextField *hexField;
-@property (weak) IBOutlet NSImageView *scanView;
-@property (weak) IBOutlet NSImageView *zoomView;
+@property (weak) IBOutlet CrosshairImageView *scanView;
+@property (weak) IBOutlet CrosshairImageView *zoomView;
 @property (weak) IBOutlet NSImageView *colorView;
 @property (weak) IBOutlet InspectButton *inspectButton;
 
@@ -34,6 +35,7 @@
     [super viewDidLoad];
     
     self.inspectButton.delegate = self;
+    self.zoomView.colorSelectionDelegate = self;
     
     self.mouseHook = [[MouseHook alloc] init];
     self.mouseHook.delegate = self;
@@ -131,8 +133,7 @@
     self.scanView.image = image;
     self.zoomView.image = debugImage;
     
-    [self loadColorInfo:scanImageRef];
-    
+    [self loadColorInfo:debugImage];
     
     CGContextRelease(scanContext);
     CGContextRelease(zoomContext);
@@ -142,41 +143,30 @@
     CGImageRelease(zoomedImage);
 }
 
-- (void)loadColorInfo:(CGImageRef)imageRef {
-    size_t bytesPerRow = CGImageGetBytesPerRow(imageRef);
-    size_t bitsPerPixel = CGImageGetBitsPerPixel(imageRef);
-    size_t bitsPerComponent = CGImageGetBitsPerComponent(imageRef);
-    size_t bytesPerPixel = bitsPerPixel / bitsPerComponent;
+- (void)loadColorInfo:(NSImage *)image {
+    NSBitmapImageRep *imageRep = [[NSBitmapImageRep alloc] initWithData:image.TIFFRepresentation];
     
-    size_t imageWidth = CGImageGetWidth(imageRef);
-    size_t imageHeight = CGImageGetHeight(imageRef);
-    size_t centerX = (imageWidth / 2) - 1;
-    size_t centerY = (imageHeight / 2) - 1;
+    NSInteger centerX = (imageRep.pixelsWide / 2);
+    NSInteger centerY = (imageRep.pixelsHigh / 2);
     
-    CFDataRef dataRef = CGDataProviderCopyData(CGImageGetDataProvider(imageRef));
-    const UInt8 *data = CFDataGetBytePtr(dataRef);
+    NSColor *color = [imageRep colorAtX:centerX y:centerY];
     
-    size_t pixelInfo = (centerY * bytesPerRow) + (centerX * bytesPerPixel);
-    
-    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
-    
-    BOOL isBGRA = (bitmapInfo & kCGBitmapByteOrderMask) == kCGBitmapByteOrder32Little;
-    
-    int redIndexOffset = isBGRA ? 2 : 0;
-    int blueIndexOffset = isBGRA ? 0 : 2;
-    
-    UInt8 red = data[pixelInfo + redIndexOffset];
-    UInt8 green = data[(pixelInfo + 1)];
-    UInt8 blue = data[(pixelInfo + blueIndexOffset)];
+    [self updateColorSelection:color];
+}
+
+- (void)onColorSelected:(NSColor *)color {
+    [self updateColorSelection:color];
+}
+
+- (void)updateColorSelection:(NSColor *)color {
+    UInt8 red = color.redComponent * 255;
+    UInt8 green = color.greenComponent * 255;
+    UInt8 blue = color.blueComponent * 255;
     
     self.rgbField.stringValue = [NSString stringWithFormat:@"%d, %d, %d", red, green, blue];
     self.hexField.stringValue = [[NSString stringWithFormat:@"#%02X%02X%02X", red, green, blue] lowercaseString];
     
-    NSColor *color = [NSColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];
-    
     self.colorView.layer.backgroundColor = color.CGColor;
-    
-    CFRelease(dataRef);
 }
 
 @end

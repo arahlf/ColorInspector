@@ -8,6 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
+@protocol ColorSelectionDelegate <NSObject>
+
+- (void)onColorSelected:(NSColor *)color;
+
+@end
+
+
 @interface CrosshairImageView : NSImageView
+
+@property (weak, nonatomic) id<ColorSelectionDelegate> colorSelectionDelegate;
+
+@property (assign, nonatomic) BOOL showCrosshairCursor;
 
 @end
