@@ -768,7 +768,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TTD-IN-oQI" userLabel="InspectButton" customClass="InspectButton">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TTD-IN-oQI" userLabel="InspectButton" customClass="InspectButton" customModule="ColorInspector">
                                 <rect key="frame" x="299" y="37" width="112" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ibM-sJ-wPa"/>
