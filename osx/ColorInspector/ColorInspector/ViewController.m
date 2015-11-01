@@ -11,7 +11,7 @@
 #import "ViewController.h"
 #import "InspectButton.h"
 #import "MouseHook.h"
-#import "CrosshairImageView.h"
+#import <ColorInspector-Swift.h>
 
 @interface ViewController() <InspectButtonDelegate, MouseHookDelegate, ColorSelectionDelegate>
 

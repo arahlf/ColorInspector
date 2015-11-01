@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -672,28 +672,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="416" height="180"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-m8-ywG" userLabel="MouseLocationLabel">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-m8-ywG" userLabel="MouseLocationLabel">
                                 <rect key="frame" x="7" y="9" width="116" height="14"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mouse Location: 0, 0" placeholderString="" id="nIj-Ah-xB8">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="801-k0-GLN" userLabel="ScanView" customClass="CrosshairImageView">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="801-k0-GLN" userLabel="ScanView" customClass="CrosshairImageView" customModule="ColorInspector">
                                 <rect key="frame" x="12" y="85" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="83" id="LMx-gt-iam"/>
                                     <constraint firstAttribute="width" constant="83" id="WRi-wC-sHC"/>
                                 </constraints>
+                                <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="5Wi-nq-waE"/>
                             </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKs-TV-cKt" userLabel="ZoomView" customClass="CrosshairImageView">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKs-TV-cKt" userLabel="ZoomView" customClass="CrosshairImageView" customModule="ColorInspector">
                                 <rect key="frame" x="107" y="85" width="83" height="83"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="83" id="9Wj-Vk-6WC"/>
                                     <constraint firstAttribute="height" constant="83" id="uyR-60-vNv"/>
                                 </constraints>
+                                <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="S5L-bA-4BN"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="showCrosshairCursor" value="YES"/>
@@ -705,18 +708,21 @@
                                     <constraint firstAttribute="height" constant="83" id="PJc-5a-F13"/>
                                     <constraint firstAttribute="width" constant="83" id="mCV-Cy-ZGt"/>
                                 </constraints>
+                                <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="66f-dA-UiN"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-NP-yOM" userLabel="ScanLabel">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-NP-yOM" userLabel="ScanLabel">
                                 <rect key="frame" x="37" y="69" width="33" height="13"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="100%" id="tg9-yk-PaV">
                                     <font key="font" metaFont="system" size="10"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eJH-ah-pUL" userLabel="ZoomLabel">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJH-ah-pUL" userLabel="ZoomLabel">
                                 <rect key="frame" x="132" y="69" width="33" height="13"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="900%" id="B44-QZ-Vmm">
                                     <font key="font" metaFont="system" size="10"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -725,14 +731,16 @@
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sjs-pG-645" userLabel="ColorLabel">
                                 <rect key="frame" x="206" y="69" width="76" height="13"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Selected Color" id="nbF-Gb-CRV">
                                     <font key="font" metaFont="system" size="10"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-dl-eca" userLabel="RgbLabel">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-dl-eca" userLabel="RgbLabel">
                                 <rect key="frame" x="303" y="154" width="33" height="14"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="RGB:" id="Rwv-eI-75X">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -744,14 +752,16 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="P4m-JL-lWq"/>
                                 </constraints>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Fgv-v1-PaX">
                                     <font key="font" size="10" name="Monaco"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-t2-QMh" userLabel="HexLabel">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-t2-QMh" userLabel="HexLabel">
                                 <rect key="frame" x="303" y="107" width="29" height="14"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hex:" id="Oeb-mY-xrl">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -763,6 +773,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ibM-sJ-wPa"/>
                                 </constraints>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="Inspect" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fE8-4q-LbB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -773,6 +784,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Do2-JO-PfY"/>
                                 </constraints>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="TM4-Tm-XOf">
                                     <font key="font" size="10" name="Monaco"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -806,6 +818,7 @@
                             <constraint firstItem="7n2-t2-QMh" firstAttribute="bottom" secondItem="kna-wM-xg1" secondAttribute="top" constant="-3" id="uIO-pT-gZW"/>
                             <constraint firstItem="SKs-TV-cKt" firstAttribute="centerX" secondItem="eJH-ah-pUL" secondAttribute="centerX" id="un3-kU-CfI"/>
                         </constraints>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="colorView" destination="X64-Hv-s2w" id="3Wz-C2-6ku"/>
@@ -813,8 +826,8 @@
                         <outlet property="inspectButton" destination="TTD-IN-oQI" id="0LP-8U-tMq"/>
                         <outlet property="mouseLocationField" destination="ddB-m8-ywG" id="RxQ-hQ-udX"/>
                         <outlet property="rgbField" destination="E69-kJ-4Ia" id="tx5-og-UW2"/>
-                        <outlet property="scanView" destination="801-k0-GLN" id="Me0-04-kDN"/>
-                        <outlet property="zoomView" destination="SKs-TV-cKt" id="0Rz-4G-hXU"/>
+                        <outlet property="scanView" destination="801-k0-GLN" id="rKu-cd-vPx"/>
+                        <outlet property="zoomView" destination="SKs-TV-cKt" id="Wee-Ip-IF3"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
