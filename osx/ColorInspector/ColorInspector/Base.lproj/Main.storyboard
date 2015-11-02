@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -672,8 +674,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="416" height="180"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-m8-ywG" userLabel="MouseLocationLabel">
-                                <rect key="frame" x="7" y="9" width="116" height="14"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ddB-m8-ywG" userLabel="MouseLocationLabel">
+                                <rect key="frame" x="7" y="9" width="114" height="14"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mouse Location: 0, 0" placeholderString="" id="nIj-Ah-xB8">
                                     <font key="font" metaFont="smallSystem"/>
@@ -711,8 +713,8 @@
                                 <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="66f-dA-UiN"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-NP-yOM" userLabel="ScanLabel">
-                                <rect key="frame" x="37" y="69" width="33" height="13"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FCW-NP-yOM" userLabel="ScanLabel">
+                                <rect key="frame" x="38" y="69" width="30" height="13"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="100%" id="tg9-yk-PaV">
                                     <font key="font" metaFont="system" size="10"/>
@@ -720,8 +722,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJH-ah-pUL" userLabel="ZoomLabel">
-                                <rect key="frame" x="132" y="69" width="33" height="13"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eJH-ah-pUL" userLabel="ZoomLabel">
+                                <rect key="frame" x="132" y="69" width="32" height="13"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="900%" id="B44-QZ-Vmm">
                                     <font key="font" metaFont="system" size="10"/>
@@ -738,8 +740,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-dl-eca" userLabel="RgbLabel">
-                                <rect key="frame" x="303" y="154" width="33" height="14"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uJc-dl-eca" userLabel="RgbLabel">
+                                <rect key="frame" x="303" y="154" width="31" height="14"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="RGB:" id="Rwv-eI-75X">
                                     <font key="font" metaFont="smallSystem"/>
@@ -759,7 +761,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-t2-QMh" userLabel="HexLabel">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-t2-QMh" userLabel="HexLabel">
                                 <rect key="frame" x="303" y="107" width="29" height="14"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hex:" id="Oeb-mY-xrl">
@@ -768,7 +770,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TTD-IN-oQI" userLabel="InspectButton" customClass="InspectButton" customModule="ColorInspector">
+                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TTD-IN-oQI" userLabel="InspectButton" customClass="InspectButton" customModule="ColorInspector">
                                 <rect key="frame" x="299" y="37" width="112" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ibM-sJ-wPa"/>
@@ -779,21 +781,44 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kna-wM-xg1" userLabel="HexField">
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMM-Or-ivf">
                                 <rect key="frame" x="305" y="85" width="100" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="Do2-JO-PfY"/>
-                                </constraints>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ch-Iq-ihT">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="19"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kna-wM-xg1" userLabel="HexField">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="19"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="Do2-JO-PfY"/>
+                                                </constraints>
+                                                <animations/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="TM4-Tm-XOf">
+                                                    <font key="font" size="10" name="Monaco"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <animations/>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
                                 <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="TM4-Tm-XOf">
-                                    <font key="font" size="10" name="Monaco"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="kna-wM-xg1" firstAttribute="leading" secondItem="X64-Hv-s2w" secondAttribute="trailing" constant="20" id="4eN-ir-xxq"/>
                             <constraint firstItem="E69-kJ-4Ia" firstAttribute="top" secondItem="uJc-dl-eca" secondAttribute="bottom" constant="3" id="6mO-qd-GCk"/>
                             <constraint firstItem="X64-Hv-s2w" firstAttribute="leading" secondItem="SKs-TV-cKt" secondAttribute="trailing" constant="12" id="7eR-Yb-GTT"/>
                             <constraint firstItem="801-k0-GLN" firstAttribute="top" secondItem="X64-Hv-s2w" secondAttribute="top" id="910-0A-kqB"/>
@@ -802,20 +827,16 @@
                             <constraint firstItem="uJc-dl-eca" firstAttribute="leading" secondItem="X64-Hv-s2w" secondAttribute="trailing" constant="20" id="POW-xa-IBO"/>
                             <constraint firstItem="E69-kJ-4Ia" firstAttribute="leading" secondItem="X64-Hv-s2w" secondAttribute="trailing" constant="20" id="QwO-2U-ZBy"/>
                             <constraint firstItem="eJH-ah-pUL" firstAttribute="top" secondItem="SKs-TV-cKt" secondAttribute="bottom" constant="3" id="SBF-F7-HF1"/>
-                            <constraint firstItem="X64-Hv-s2w" firstAttribute="bottom" secondItem="kna-wM-xg1" secondAttribute="bottom" id="Tkk-6d-VZH"/>
                             <constraint firstItem="Sjs-pG-645" firstAttribute="top" secondItem="X64-Hv-s2w" secondAttribute="bottom" constant="3" id="UHe-O8-wYi"/>
                             <constraint firstItem="ddB-m8-ywG" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="9" id="Yqj-w4-OEI"/>
                             <constraint firstItem="7n2-t2-QMh" firstAttribute="leading" secondItem="X64-Hv-s2w" secondAttribute="trailing" constant="20" id="fWq-f4-dBH"/>
-                            <constraint firstItem="TTD-IN-oQI" firstAttribute="top" secondItem="kna-wM-xg1" secondAttribute="bottom" constant="20" id="hRo-dj-uN9"/>
                             <constraint firstItem="801-k0-GLN" firstAttribute="centerX" secondItem="FCW-NP-yOM" secondAttribute="centerX" id="i3I-mX-Url"/>
                             <constraint firstItem="SKs-TV-cKt" firstAttribute="top" secondItem="801-k0-GLN" secondAttribute="top" id="imH-mL-sZq"/>
                             <constraint firstAttribute="bottom" secondItem="ddB-m8-ywG" secondAttribute="bottom" constant="9" id="je1-vJ-oSb"/>
                             <constraint firstItem="FCW-NP-yOM" firstAttribute="top" secondItem="801-k0-GLN" secondAttribute="bottom" constant="3" id="kwR-FZ-scE"/>
                             <constraint firstItem="801-k0-GLN" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="12" id="lvU-9u-2aT"/>
-                            <constraint firstItem="kna-wM-xg1" firstAttribute="leading" secondItem="TTD-IN-oQI" secondAttribute="leading" id="rNr-oT-Lri"/>
                             <constraint firstItem="SKs-TV-cKt" firstAttribute="leading" secondItem="801-k0-GLN" secondAttribute="trailing" constant="12" id="rSS-db-P2P"/>
                             <constraint firstItem="801-k0-GLN" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="t8I-Zf-q3F"/>
-                            <constraint firstItem="7n2-t2-QMh" firstAttribute="bottom" secondItem="kna-wM-xg1" secondAttribute="top" constant="-3" id="uIO-pT-gZW"/>
                             <constraint firstItem="SKs-TV-cKt" firstAttribute="centerX" secondItem="eJH-ah-pUL" secondAttribute="centerX" id="un3-kU-CfI"/>
                         </constraints>
                         <animations/>
