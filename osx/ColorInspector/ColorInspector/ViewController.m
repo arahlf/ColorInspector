@@ -9,7 +9,6 @@
 #import <ApplicationServices/ApplicationServices.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "ViewController.h"
-#import "MouseHook.h"
 #import <ColorInspector-Swift.h>
 
 @interface ViewController() <InspectButtonDelegate, MouseHookDelegate, ColorSelectionDelegate>

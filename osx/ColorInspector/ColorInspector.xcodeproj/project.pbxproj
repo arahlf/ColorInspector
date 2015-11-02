@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		1B5BCE821BE6343500911C34 /* CrosshairImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BCE811BE6343500911C34 /* CrosshairImageView.swift */; };
 		1B5BCE841BE649C500911C34 /* InspectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BCE831BE649C500911C34 /* InspectButton.swift */; };
+		1B5BCE861BE6DFE900911C34 /* MouseHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BCE851BE6DFE900911C34 /* MouseHook.swift */; };
 		1B6C8A391B783C5F00713D00 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A381B783C5F00713D00 /* AppDelegate.m */; };
 		1B6C8A3B1B783C5F00713D00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A3A1B783C5F00713D00 /* main.m */; };
 		1B6C8A3E1B783C5F00713D00 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A3D1B783C5F00713D00 /* ViewController.m */; };
 		1B6C8A401B783C5F00713D00 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6C8A3F1B783C5F00713D00 /* Images.xcassets */; };
 		1B6C8A431B783C5F00713D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B6C8A411B783C5F00713D00 /* Main.storyboard */; };
 		1B6C8A4F1B783C5F00713D00 /* ColorInspectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A4E1B783C5F00713D00 /* ColorInspectorTests.m */; };
-		1B6C8A5A1B7846A000713D00 /* MouseHook.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A591B7846A000713D00 /* MouseHook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +32,7 @@
 		1B5BCE7E1BE633F700911C34 /* ColorInspector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ColorInspector-Bridging-Header.h"; sourceTree = "<group>"; };
 		1B5BCE811BE6343500911C34 /* CrosshairImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrosshairImageView.swift; sourceTree = "<group>"; };
 		1B5BCE831BE649C500911C34 /* InspectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectButton.swift; sourceTree = "<group>"; };
+		1B5BCE851BE6DFE900911C34 /* MouseHook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MouseHook.swift; sourceTree = "<group>"; };
 		1B6C8A321B783C5F00713D00 /* ColorInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6C8A361B783C5F00713D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B6C8A371B783C5F00713D00 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -44,8 +45,6 @@
 		1B6C8A481B783C5F00713D00 /* ColorInspectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorInspectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6C8A4D1B783C5F00713D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B6C8A4E1B783C5F00713D00 /* ColorInspectorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorInspectorTests.m; sourceTree = "<group>"; };
-		1B6C8A581B7846A000713D00 /* MouseHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MouseHook.h; sourceTree = "<group>"; };
-		1B6C8A591B7846A000713D00 /* MouseHook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MouseHook.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,11 +93,10 @@
 				1B6C8A3D1B783C5F00713D00 /* ViewController.m */,
 				1B6C8A411B783C5F00713D00 /* Main.storyboard */,
 				1B5BCE811BE6343500911C34 /* CrosshairImageView.swift */,
-				1B6C8A581B7846A000713D00 /* MouseHook.h */,
-				1B6C8A591B7846A000713D00 /* MouseHook.m */,
 				1B5BCE831BE649C500911C34 /* InspectButton.swift */,
 				1B6C8A3F1B783C5F00713D00 /* Images.xcassets */,
 				1B5BCE7E1BE633F700911C34 /* ColorInspector-Bridging-Header.h */,
+				1B5BCE851BE6DFE900911C34 /* MouseHook.swift */,
 			);
 			path = ColorInspector;
 			sourceTree = "<group>";
@@ -230,10 +228,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B6C8A5A1B7846A000713D00 /* MouseHook.m in Sources */,
 				1B6C8A3E1B783C5F00713D00 /* ViewController.m in Sources */,
 				1B6C8A3B1B783C5F00713D00 /* main.m in Sources */,
 				1B6C8A391B783C5F00713D00 /* AppDelegate.m in Sources */,
+				1B5BCE861BE6DFE900911C34 /* MouseHook.swift in Sources */,
 				1B5BCE841BE649C500911C34 /* InspectButton.swift in Sources */,
 				1B5BCE821BE6343500911C34 /* CrosshairImageView.swift in Sources */,
 			);
