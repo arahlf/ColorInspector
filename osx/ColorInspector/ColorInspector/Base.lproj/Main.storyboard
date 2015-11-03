@@ -761,8 +761,8 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-t2-QMh" userLabel="HexLabel">
-                                <rect key="frame" x="303" y="107" width="29" height="14"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-t2-QMh" userLabel="HexLabel">
+                                <rect key="frame" x="303" y="107" width="28" height="14"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hex:" id="Oeb-mY-xrl">
                                     <font key="font" metaFont="smallSystem"/>
@@ -770,7 +770,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TTD-IN-oQI" userLabel="InspectButton" customClass="InspectButton" customModule="ColorInspector">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TTD-IN-oQI" userLabel="InspectButton" customClass="InspectButton" customModule="ColorInspector">
                                 <rect key="frame" x="299" y="37" width="112" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ibM-sJ-wPa"/>
@@ -819,8 +819,10 @@
                             </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="kna-wM-xg1" firstAttribute="bottom" secondItem="X64-Hv-s2w" secondAttribute="bottom" id="2eC-dU-P0I"/>
                             <constraint firstItem="E69-kJ-4Ia" firstAttribute="top" secondItem="uJc-dl-eca" secondAttribute="bottom" constant="3" id="6mO-qd-GCk"/>
                             <constraint firstItem="X64-Hv-s2w" firstAttribute="leading" secondItem="SKs-TV-cKt" secondAttribute="trailing" constant="12" id="7eR-Yb-GTT"/>
+                            <constraint firstItem="kna-wM-xg1" firstAttribute="top" secondItem="7n2-t2-QMh" secondAttribute="bottom" constant="3" id="8vs-45-NlF"/>
                             <constraint firstItem="801-k0-GLN" firstAttribute="top" secondItem="X64-Hv-s2w" secondAttribute="top" id="910-0A-kqB"/>
                             <constraint firstItem="X64-Hv-s2w" firstAttribute="centerX" secondItem="Sjs-pG-645" secondAttribute="centerX" id="KR3-hb-gEf"/>
                             <constraint firstItem="X64-Hv-s2w" firstAttribute="top" secondItem="uJc-dl-eca" secondAttribute="top" id="OIW-3s-6lL"/>
@@ -828,6 +830,7 @@
                             <constraint firstItem="E69-kJ-4Ia" firstAttribute="leading" secondItem="X64-Hv-s2w" secondAttribute="trailing" constant="20" id="QwO-2U-ZBy"/>
                             <constraint firstItem="eJH-ah-pUL" firstAttribute="top" secondItem="SKs-TV-cKt" secondAttribute="bottom" constant="3" id="SBF-F7-HF1"/>
                             <constraint firstItem="Sjs-pG-645" firstAttribute="top" secondItem="X64-Hv-s2w" secondAttribute="bottom" constant="3" id="UHe-O8-wYi"/>
+                            <constraint firstItem="TTD-IN-oQI" firstAttribute="top" secondItem="kna-wM-xg1" secondAttribute="bottom" constant="20" id="VCx-j1-4Ob"/>
                             <constraint firstItem="ddB-m8-ywG" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="9" id="Yqj-w4-OEI"/>
                             <constraint firstItem="7n2-t2-QMh" firstAttribute="leading" secondItem="X64-Hv-s2w" secondAttribute="trailing" constant="20" id="fWq-f4-dBH"/>
                             <constraint firstItem="801-k0-GLN" firstAttribute="centerX" secondItem="FCW-NP-yOM" secondAttribute="centerX" id="i3I-mX-Url"/>
@@ -838,6 +841,7 @@
                             <constraint firstItem="SKs-TV-cKt" firstAttribute="leading" secondItem="801-k0-GLN" secondAttribute="trailing" constant="12" id="rSS-db-P2P"/>
                             <constraint firstItem="801-k0-GLN" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="12" id="t8I-Zf-q3F"/>
                             <constraint firstItem="SKs-TV-cKt" firstAttribute="centerX" secondItem="eJH-ah-pUL" secondAttribute="centerX" id="un3-kU-CfI"/>
+                            <constraint firstItem="TTD-IN-oQI" firstAttribute="centerX" secondItem="E69-kJ-4Ia" secondAttribute="centerX" id="yoQ-HW-ApX"/>
                         </constraints>
                         <animations/>
                     </view>
