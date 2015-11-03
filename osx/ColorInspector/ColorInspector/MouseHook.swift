@@ -13,19 +13,17 @@ import Cocoa
     func onMouseUp(point: CGPoint);
 }
 
-// Haven't been able to figure out how to pass in a value for the refcon parameter of CGEventTapCreate
-// yet so the workaround for now is to just store off a singleton-ish reference to it (feelsbadman)
-private var instance: MouseHook?;
-
 func handleCGEvent(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon: UnsafeMutablePointer<Void>) -> Unmanaged<CGEvent>? {
+    let mouseHook: MouseHook = Unmanaged.fromOpaque(COpaquePointer(refcon)).takeUnretainedValue();
+    
     if (type == .MouseMoved || type == .LeftMouseDragged) {
-        instance!.delegate?.onMouseMove(CGEventGetLocation(event));
+        mouseHook.delegate?.onMouseMove(CGEventGetLocation(event));
     }
     else if (type == .LeftMouseUp) {
-        instance!.delegate?.onMouseUp(CGEventGetLocation(event));
+        mouseHook.delegate?.onMouseUp(CGEventGetLocation(event));
     }
     else if (type == .TapDisabledByTimeout) {
-        CGEventTapEnable(instance!.eventTap!, true);
+        CGEventTapEnable(mouseHook.eventTap!, true);
     }
     
     return Unmanaged.passRetained(event);
@@ -40,13 +38,13 @@ func handleCGEvent(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, re
     override init() {
         super.init();
         
-        instance = self;
-        
         self.setupMouseHook();
     }
     
     func setupMouseHook() {
-        self.eventTap = CGEventTapCreate(.CGHIDEventTap, .HeadInsertEventTap, .ListenOnly, ~CGEventMask(0), handleCGEvent, nil);
+        let refcon = UnsafeMutablePointer<Void>(Unmanaged.passUnretained(self).toOpaque());
+        
+        self.eventTap = CGEventTapCreate(.CGHIDEventTap, .HeadInsertEventTap, .ListenOnly, ~CGEventMask(0), handleCGEvent, refcon);
         let runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, self.eventTap, 0);
         CFRunLoopAddSource(CFRunLoopGetMain(), runLoopSource, kCFRunLoopCommonModes);
     }
