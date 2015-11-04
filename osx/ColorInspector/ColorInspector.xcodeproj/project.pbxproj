@@ -11,7 +11,7 @@
 		1B5BCE841BE649C500911C34 /* InspectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BCE831BE649C500911C34 /* InspectButton.swift */; };
 		1B5BCE861BE6DFE900911C34 /* MouseHook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BCE851BE6DFE900911C34 /* MouseHook.swift */; };
 		1B5BCEC31BE8D3FA00911C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BCEC21BE8D3FA00911C34 /* AppDelegate.swift */; };
-		1B6C8A3E1B783C5F00713D00 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A3D1B783C5F00713D00 /* ViewController.m */; };
+		1B5BCEC51BE8D5F000911C34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5BCEC41BE8D5F000911C34 /* ViewController.swift */; };
 		1B6C8A401B783C5F00713D00 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B6C8A3F1B783C5F00713D00 /* Images.xcassets */; };
 		1B6C8A431B783C5F00713D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B6C8A411B783C5F00713D00 /* Main.storyboard */; };
 		1B6C8A4F1B783C5F00713D00 /* ColorInspectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C8A4E1B783C5F00713D00 /* ColorInspectorTests.m */; };
@@ -28,15 +28,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B5BCE7E1BE633F700911C34 /* ColorInspector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ColorInspector-Bridging-Header.h"; sourceTree = "<group>"; };
 		1B5BCE811BE6343500911C34 /* CrosshairImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrosshairImageView.swift; sourceTree = "<group>"; };
 		1B5BCE831BE649C500911C34 /* InspectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspectButton.swift; sourceTree = "<group>"; };
 		1B5BCE851BE6DFE900911C34 /* MouseHook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MouseHook.swift; sourceTree = "<group>"; };
 		1B5BCEC21BE8D3FA00911C34 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1B5BCEC41BE8D5F000911C34 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1B6C8A321B783C5F00713D00 /* ColorInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B6C8A361B783C5F00713D00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1B6C8A3C1B783C5F00713D00 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1B6C8A3D1B783C5F00713D00 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1B6C8A3F1B783C5F00713D00 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B6C8A421B783C5F00713D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B6C8A481B783C5F00713D00 /* ColorInspectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorInspectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,13 +83,11 @@
 			isa = PBXGroup;
 			children = (
 				1B5BCEC21BE8D3FA00911C34 /* AppDelegate.swift */,
-				1B6C8A3C1B783C5F00713D00 /* ViewController.h */,
-				1B6C8A3D1B783C5F00713D00 /* ViewController.m */,
+				1B5BCEC41BE8D5F000911C34 /* ViewController.swift */,
 				1B6C8A411B783C5F00713D00 /* Main.storyboard */,
 				1B5BCE811BE6343500911C34 /* CrosshairImageView.swift */,
 				1B5BCE831BE649C500911C34 /* InspectButton.swift */,
 				1B6C8A3F1B783C5F00713D00 /* Images.xcassets */,
-				1B5BCE7E1BE633F700911C34 /* ColorInspector-Bridging-Header.h */,
 				1B5BCE851BE6DFE900911C34 /* MouseHook.swift */,
 			);
 			path = ColorInspector;
@@ -224,10 +220,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B5BCEC31BE8D3FA00911C34 /* AppDelegate.swift in Sources */,
-				1B6C8A3E1B783C5F00713D00 /* ViewController.m in Sources */,
 				1B5BCE861BE6DFE900911C34 /* MouseHook.swift in Sources */,
 				1B5BCE841BE649C500911C34 /* InspectButton.swift in Sources */,
 				1B5BCE821BE6343500911C34 /* CrosshairImageView.swift in Sources */,
+				1B5BCEC51BE8D5F000911C34 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +347,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.arahlf.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ColorInspector/ColorInspector-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -366,7 +361,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.arahlf.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ColorInspector/ColorInspector-Bridging-Header.h";
 			};
 			name = Release;
 		};

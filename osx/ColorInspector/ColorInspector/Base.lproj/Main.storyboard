@@ -665,7 +665,7 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="ColorInspector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="416" height="180"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -842,13 +842,13 @@
                         <animations/>
                     </view>
                     <connections>
-                        <outlet property="colorView" destination="X64-Hv-s2w" id="3Wz-C2-6ku"/>
-                        <outlet property="hexField" destination="kna-wM-xg1" id="GWO-ab-IMa"/>
-                        <outlet property="inspectButton" destination="TTD-IN-oQI" id="0LP-8U-tMq"/>
-                        <outlet property="mouseLocationField" destination="ddB-m8-ywG" id="RxQ-hQ-udX"/>
-                        <outlet property="rgbField" destination="E69-kJ-4Ia" id="tx5-og-UW2"/>
-                        <outlet property="scanView" destination="801-k0-GLN" id="rKu-cd-vPx"/>
-                        <outlet property="zoomView" destination="SKs-TV-cKt" id="Wee-Ip-IF3"/>
+                        <outlet property="colorView" destination="X64-Hv-s2w" id="RZX-5e-Q9w"/>
+                        <outlet property="hexField" destination="kna-wM-xg1" id="XZA-ID-UQp"/>
+                        <outlet property="inspectButton" destination="TTD-IN-oQI" id="9Ju-yi-ki2"/>
+                        <outlet property="mouseLocationField" destination="ddB-m8-ywG" id="jLl-5W-mMP"/>
+                        <outlet property="rgbField" destination="E69-kJ-4Ia" id="3TH-Tk-ye0"/>
+                        <outlet property="scanView" destination="801-k0-GLN" id="WPD-5T-arX"/>
+                        <outlet property="zoomView" destination="SKs-TV-cKt" id="QnI-ds-9Ii"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
