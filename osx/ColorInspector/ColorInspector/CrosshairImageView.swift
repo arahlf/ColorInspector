@@ -8,11 +8,11 @@
 
 import Cocoa
 
-@objc protocol ColorSelectionDelegate {
+protocol ColorSelectionDelegate {
     func onColorSelected(color: NSColor);
 }
 
-@objc class CrosshairImageView: NSImageView {
+class CrosshairImageView: NSImageView {
     
     var colorSelectionDelegate: ColorSelectionDelegate?;
     var showCrosshairCursor: Bool;

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-@objc protocol MouseHookDelegate {
+protocol MouseHookDelegate {
     func onMouseMove(point: CGPoint);
     func onMouseUp(point: CGPoint);
 }
@@ -29,7 +29,7 @@ func handleCGEvent(proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, re
     return Unmanaged.passRetained(event);
 }
 
-@objc class MouseHook: NSObject {
+class MouseHook: NSObject {
     
     var delegate: MouseHookDelegate?;
     

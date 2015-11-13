@@ -8,7 +8,7 @@
 
 import Cocoa
 
-@objc class ViewController: NSViewController, InspectButtonDelegate, MouseHookDelegate, ColorSelectionDelegate {
+class ViewController: NSViewController, InspectButtonDelegate, MouseHookDelegate, ColorSelectionDelegate {
     
     private var mouseHook: MouseHook?;
     private var scanning: Bool = false;

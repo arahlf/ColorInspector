@@ -8,11 +8,11 @@
 
 import Cocoa
 
-@objc protocol InspectButtonDelegate {
+protocol InspectButtonDelegate {
     func onMouseDown(inspectButton: InspectButton);
 }
 
-@objc class InspectButton: NSButton {
+class InspectButton: NSButton {
     
     var delegate: InspectButtonDelegate?;
 
